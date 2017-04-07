@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TTP_Project.Models.entities.WorkItem>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+<p>
+</p>
+@using (Html.BeginForm("Index", "Programmer", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink(" name", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            DueDate
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+
+
+            </td>
+        </tr>
+    }
+</table>
+

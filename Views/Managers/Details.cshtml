@@ -1,0 +1,57 @@
+﻿@model TTP_Project.Models.entities.Project
+@{
+    ViewBag.Title = "Details";
+}
+<h2>Details</h2>
+<div>
+    <h4>Manager</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.order.completeDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.order.completeDate)
+        </dd>
+        <table class="table">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    DueDate
+                </th>
+                <th>
+                    Status
+                </th>
+                <th> AssignedWorker</th>
+            </tr>
+            @foreach (var item in Model.tasks)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Name, "EditTask", "Managers", new { id = item.Id }, null)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DueDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AssignedWorker)
+                    </td>
+                </tr>
+            }
+        </table>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

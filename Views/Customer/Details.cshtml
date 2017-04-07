@@ -1,0 +1,39 @@
+﻿@model TTP_Project.Models.entities.Order
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Order Number
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.completeDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.completeDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.orderStartus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.orderStartus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.detailDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.detailDescription)
+        </dd>
+    </dl>
+</div>

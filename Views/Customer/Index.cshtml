@@ -1,0 +1,44 @@
+﻿@model IEnumerable<TTP_Project.Models.entities.Order>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New Order", "Index", "Items")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Order Number
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.completeDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.orderStartus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.detailDescription)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.OrderId.ToString(), "Details", new { id = item.OrderId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.completeDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderStartus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.detailDescription)
+            </td>
+
+            <td></td>
+        </tr>
+    }
+</table>

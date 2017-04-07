@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Web Agency "Curved Hands"</title>
+    @Styles.Render("~/css/css")
+</head>
+<body>
+    <div class="navbar-cont">
+        <ul class="navigation-bar">
+            @if (Request.IsAuthenticated)
+            {
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                if (!User.IsInRole("Admin"))
+                {
+                <li>@Html.ActionLink("My cabinet", "Index", "Distributor")</li>
+                }
+
+                if (User.IsInRole("Admin"))
+                {
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Roles", "Index", "Roles")</li>
+                    <li>@Html.ActionLink("Users", "Index", "AdminUser")</li>
+                }
+
+            }
+            else
+            {
+
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            }
+        </ul>
+        @Html.Partial("_LoginPartial")
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - "Curved Hands"</p>
+        </footer>
+    </div>
+
+</body>
+</html>
