@@ -47,6 +47,7 @@ namespace TTP_Project.Models.repository
                 return catagorieRepository;
             }
         }
+
         public GenericRepository<OrderDetail> OrderDetailRepository
         {
             get
@@ -59,6 +60,7 @@ namespace TTP_Project.Models.repository
                 return orderDetailsRepository;
             }
         }
+
         public GenericRepository<Cart> CartRepository
         {
             get

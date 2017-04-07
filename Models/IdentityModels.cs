@@ -182,7 +182,6 @@ namespace TTP_Project.Models
             this.Catagories.Add(official);
             this.Catagories.Add(shop);
             this.Catagories.Add(amazing);
-            this.SaveChanges();
 
             ProductItem item1 = new ProductItem()
             {
@@ -191,27 +190,51 @@ namespace TTP_Project.Models
                 shortDescription = "VisitCard",
                 description = "Some VisitCard for CV",
                 Categorie = TemplateSiteTypes.VisitCard
-                
             };
 
             ProductItem item2 = new ProductItem()
             {
-                Name = "Blog",
-                Price = 234,
+                Name = "Template Blog",
+                Price = 200,
                 shortDescription = "Funny blog",
                 description = "good blog for everyone",
                 Categorie = TemplateSiteTypes.Blog
             };
+
+            ProductItem item3 = new ProductItem()
+            {
+                Name = "Template Official",
+                Price = 160,
+                shortDescription = "Official",
+                description = "Template Official long description",
+                Categorie = TemplateSiteTypes.Oficial
+
+            };
+
+            ProductItem item4 = new ProductItem()
+            {
+                Name = "Amazing Template",
+                Price = 224,
+                shortDescription = "Amazing",
+                description = "Amazing for everyone",
+                ItemPictureUrl = "http://cssmenumaker.com/sites/default/files/blog_list_images/screen_shot_2013-02-11_at_9.07.59_pm.png",
+                Categorie = TemplateSiteTypes.Amazing
+                
+            };
             this.ProductItems.Add(item1);
             this.ProductItems.Add(item2);
+            this.ProductItems.Add(item3);
+            this.ProductItems.Add(item4);
+            this.SaveChanges();
 
             WorkItem workItem = new WorkItem()
             {
-                Name = "Шаблон 1",
-                Description = "blabla",
-                // hours, minutes, seconds
+                Name = "Frontend",
+                Price = 100,
+                Description = "Create frontend blog",
                 DueDate = DateTime.Today + (new TimeSpan(12, 20, 20)),
-                Status = TaskStatus.InProgress
+                Status = TaskStatus.InProgress,
+                AssignedWorker = user4
             };
             this.WorkItems.Add(workItem);
 
@@ -219,40 +242,32 @@ namespace TTP_Project.Models
             {
                 Name = "Шаблон 2",
                 Description = "blablabla",
-                // hours, minutes, seconds
                 DueDate = DateTime.Today + (new TimeSpan(12, 20, 20)),
                 Status = TaskStatus.InProgress
             };
-            this.WorkItems.Add(workItem);
-
-            this.SaveChanges();
+            this.WorkItems.Add(workItem1);
 
             WorkItem workItem2 = new WorkItem()
             {
                 Name = "Icon",
                 Description = "wow",
-                // hours, minutes, seconds
                 DueDate = DateTime.Today + (new TimeSpan(12, 20, 20)),
                 Status = TaskStatus.InProgress
             };
             this.WorkItems.Add(workItem2);
-            this.SaveChanges();
-
-              //  DueDate = new DateTime(2015,05,12);
-         
+          
 
             Resourse r1 = new Resourse() { 
-                 Name = "Reorce",
-                 Price = 20,
-                 Description = "One the rule them all "
-                  
+                 Name = "Meal",
+                 Price = 200,
+                 Description = "Some meal for staff"
             };
+
             Resourse r2 = new Resourse()
             {
-                Name = "Reorce2",
-                Price = 40,
-                Description = "One the rule them all "
-
+                Name = "LapTops",
+                Price = 1000,
+                Description = "Computers for programmers"
             };
             
             this.Resources.Add(r1);
@@ -260,11 +275,11 @@ namespace TTP_Project.Models
 
             Order or1 = new Order()
             {
-                completeDate = DateTime.Now,
-                OrderDate =  DateTime.Now,
-                detailDescription = "mememe",
+                completeDate = new DateTime(2017,5,7) + (new TimeSpan(12, 20, 20)),
+                OrderDate = new DateTime(2017, 3, 2) + (new TimeSpan(12, 20, 20)),
+                detailDescription = "Order that show bought blog",
                 orderStartus = OrderStatus.Initiating,
-                Total = 200,
+                Total = 550,
                 customer = new Customer()
                 {
                     Email = "@",
@@ -272,48 +287,47 @@ namespace TTP_Project.Models
                     LastName = "B",
                     RoleName = RolesConst.CUSTOMER,
                     UserName = "Nam"
-                }
+                },
+                orderItems = new List<ProductItem>()
 
             };
 
-
+            or1.orderItems.Add(item3);
+            or1.orderItems.Add(item4);
             this.Orders.Add(or1);
-
+            
             Order or2 = new Order()
             {
                 completeDate = DateTime.Now,
                 OrderDate = DateTime.Now,
-                detailDescription = "nyanyayna",
+                detailDescription = "Another description",
                 orderStartus = OrderStatus.Processiong,
-                Total = 150,
-          
-
+                Total = 150
             };
 
             Order or3 = new Order()
             {
                 completeDate = DateTime.Now,
                 OrderDate = DateTime.Now,
-                detailDescription = "sysysy",
+                detailDescription = "Some descriotion",
                 orderStartus = OrderStatus.Initiating,
                 Total = 600,
-               
-
             };
-
+        
             this.Orders.Add(or2);
             this.Orders.Add(or3);
 
             Project project = new Project()
             {
-                name = "MyProject",
+                name = "Creating blog",
                 nameProjectManager = "manager@gmail.com",
                 costs = 300,
-                projectStatus = ProjectStatus.Initial,
+                projectStatus = ProjectStatus.InProgress,
                 projectManager = user10,
                 order = or1,
                 tasks = new List<WorkItem>()
             };
+
             project.tasks.Add(workItem);
             project.tasks.Add(workItem1);
             this.Projects.Add(project);

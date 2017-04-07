@@ -11,16 +11,17 @@ using TTP_Project.Models.constants;
 
 namespace TTP_Project.Models.entities
 {
-      [Bind(Exclude = "ID")]
+    [Bind(Exclude = "ID")]
     public class ProductItem
     {
-        // private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         [Key]
         [ScaffoldColumn(false)]
         public int ID {get; set;}
+
         [Required(ErrorMessage = "An Item Name is required")]
         [StringLength(160)]
         public string Name {get; set;}
+
         public String shortDescription {get; set;}
         public String description {get; set;}
         [Required(ErrorMessage = "Price is required")]
@@ -30,10 +31,6 @@ namespace TTP_Project.Models.entities
         {
             return Name + " " + Price + " " +description;
         }
-
-     /*   [DisplayName("Catagorie")]
-        public int CatagorieId { get; set; }
-      * */
 
         public byte[] InternalImage { get; set; }
 
@@ -69,9 +66,7 @@ namespace TTP_Project.Models.entities
         [DisplayName("Item Picture URL")]
         [StringLength(1024)]
         public string ItemPictureUrl { get; set; }
-
-     /*  public virtual Catagorie Catagorie { get; set; }
-      * */
+        
         public virtual List<OrderDetail> OrderDetails { get; set; }
 
         public TemplateSiteTypes Categorie { get; set; }
