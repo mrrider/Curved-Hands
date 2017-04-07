@@ -193,13 +193,14 @@ namespace TTP_Project.Models
                 Categorie = TemplateSiteTypes.VisitCard
                 
             };
+
             ProductItem item2 = new ProductItem()
             {
-                Name = "Шаблон 2",
+                Name = "Blog",
                 Price = 234,
-                shortDescription = "blabla",
-                description = "blablaballll",
-                Categorie = TemplateSiteTypes.VisitCard
+                shortDescription = "Funny blog",
+                description = "good blog for everyone",
+                Categorie = TemplateSiteTypes.Blog
             };
             this.ProductItems.Add(item1);
             this.ProductItems.Add(item2);
