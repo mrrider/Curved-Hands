@@ -13,6 +13,9 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.mdf
+*.ldf
+*.dll
 
 # Windows shortcuts
 *.lnk
@@ -48,3 +51,6 @@ Temporary Items
 
 bin/
 obj/
+App_Data/
+Web.config
+applicationhost.config
