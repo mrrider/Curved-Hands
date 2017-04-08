@@ -8,7 +8,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Project</h4>
+        <h4>New Project</h4>
         <hr />
         @Html.ValidationSummary(true)
         <div class="form-group">
@@ -23,6 +23,12 @@
             <div class="col-md-10">
                 @Html.DropDownListFor(m => m.nameProjectManager, new SelectList(ViewBag.pm, "UserName", "UserName"), "")
                 @Html.ValidationMessageFor(model => model.nameProjectManager)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.order.Total, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.costs)
             </div>
         </div>
         <div class="form-group">

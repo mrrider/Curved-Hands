@@ -30,5 +30,7 @@ namespace TTP_Project.Models.entities
         public string Country { get; set; }
          [Required]
         public string RoleName { get; set; }
+
+        public virtual ICollection<Order> orders { get; set; }
     }
 }

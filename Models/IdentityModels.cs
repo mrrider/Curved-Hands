@@ -11,6 +11,8 @@ using System.Linq;
 using TTP_Project.Models.constants;
 using TTP_Project.Models.repository;
 using TaskStatus = TTP_Project.Models.constants.TaskStatus;
+using System.IO;
+using System.Web;
 
 namespace TTP_Project.Models
 {
@@ -240,6 +242,7 @@ namespace TTP_Project.Models
                 shortDescription = "Amazing",
                 description = "Amazing for everyone",
                 ItemPictureUrl = "http://cssmenumaker.com/sites/default/files/blog_list_images/screen_shot_2013-02-11_at_9.07.59_pm.png",
+                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
                 Categorie = TemplateSiteTypes.Amazing
                 
             };

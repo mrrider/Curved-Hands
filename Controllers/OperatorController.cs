@@ -22,7 +22,7 @@ namespace TTP_Project.Controllers
             return View(workItems);
         }
 
-        public ActionResult Details(string id = "")
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
@@ -62,7 +62,7 @@ namespace TTP_Project.Controllers
                 return RedirectToAction("Index", "Operator");
         }
         
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
@@ -94,13 +94,21 @@ namespace TTP_Project.Controllers
             return RedirectToAction("Index");
         }
         
-        public ActionResult Delete(string id = "")
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkItem @workItem = unitOfWork.WorkItemRepository.GetByID(id);
+            WorkItem @workItem;
+            try
+            {
+                @workItem = unitOfWork.WorkItemRepository.GetByID(id);
+            }catch(Exception ex) {
+                @workItem = null;
+                return HttpNotFound(ex.Message);
+            }
+                
             if (@workItem == null)
             {
                 return HttpNotFound();
@@ -110,7 +118,7 @@ namespace TTP_Project.Controllers
         
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id = "")
+        public ActionResult DeleteConfirmed(int id)
         {
             WorkItem @workItem = unitOfWork.WorkItemRepository.GetByID(id);
             unitOfWork.WorkItemRepository.Delete(@workItem);

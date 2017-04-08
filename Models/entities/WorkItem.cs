@@ -12,6 +12,7 @@ namespace TTP_Project.Models.entities
         public String Name  { get; set; }
         public String Description { get; set; }
         public DateTime DueDate { get; set; }
+        public DateTime DateCreated { get; set; }
         public TaskStatus Status { get; set; }
         public virtual ApplicationUser AssignedWorker { get; set; }
         public virtual Project assignedProject { get; set; }

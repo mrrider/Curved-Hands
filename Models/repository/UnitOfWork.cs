@@ -11,29 +11,13 @@ namespace TTP_Project.Models.repository
         private ApplicationDbContext context = new ApplicationDbContext();
 
         private GenericRepository<Order> orderRepository;
-        private GenericRepository<ApplicationUser> applicationRepository;
+        private GenericRepository<ApplicationUser> applicationUserRepository;
         private GenericRepository<WorkItem> workItemRepository;
-        private GenericRepository<Resourse> resourceRepository;
         private GenericRepository<ProductItem> productItemRepository;
-        private GenericRepository<OrderDetail> orderDetailsRepository;
         private GenericRepository<Project> projectRepository;
         private GenericRepository<Cart> cartRepository;
-        private GenericRepository<Manager> managerRepository;
         private GenericRepository<Catagorie> catagorieRepository;
-        private GenericRepository<Customer> customerRepository;
-
-        public GenericRepository<Customer> CustomerRepository
-        {
-            get
-            {
-
-                if (this.customerRepository == null)
-                {
-                    this.customerRepository = new GenericRepository<Customer>(context);
-                }
-                return customerRepository;
-            }
-        }
+        private GenericRepository<Finances> financesRepository;
 
         public GenericRepository<Catagorie> CatagorieRepositpry
         {
@@ -45,19 +29,6 @@ namespace TTP_Project.Models.repository
                     this.catagorieRepository = new GenericRepository<Catagorie>(context);
                 }
                 return catagorieRepository;
-            }
-        }
-
-        public GenericRepository<OrderDetail> OrderDetailRepository
-        {
-            get
-            {
-
-                if (this.orderDetailsRepository == null)
-                {
-                    this.orderDetailsRepository = new GenericRepository<OrderDetail>(context);
-                }
-                return orderDetailsRepository;
             }
         }
 
@@ -100,31 +71,6 @@ namespace TTP_Project.Models.repository
             }
         }
 
-        public GenericRepository<Manager> ManagerRepository
-        {
-            get
-            {
-
-                if (this.managerRepository == null)
-                {
-                    this.managerRepository = new GenericRepository<Manager>(context);
-                }
-                return managerRepository;
-            }
-        }
-        public GenericRepository<Resourse> ResourceRepository
-        {
-            get
-            {
-
-                if (this.resourceRepository == null)
-                {
-                    this.resourceRepository = new GenericRepository<Resourse>(context);
-                }
-                return resourceRepository;
-            }
-        }
-
         public GenericRepository<Order> OrderRepository
         {
             get
@@ -151,20 +97,19 @@ namespace TTP_Project.Models.repository
             }
         }
 
-
-       
         public GenericRepository<ApplicationUser> UserRepository
         {
             get
             {
 
-                if (this.applicationRepository == null)
+                if (this.applicationUserRepository == null)
                 {
-                    this.applicationRepository = new GenericRepository<ApplicationUser>(context);
+                    this.applicationUserRepository = new GenericRepository<ApplicationUser>(context);
                 }
-                return applicationRepository;
+                return applicationUserRepository;
             }
         }
+
         public void Save()
         {
             context.SaveChanges();

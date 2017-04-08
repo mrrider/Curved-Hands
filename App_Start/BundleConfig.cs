@@ -11,6 +11,9 @@ namespace TTP_Project
             bundles.Add(new StyleBundle("~/css/css").Include(
                       "~/css/*.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                       "~/Scripts/jquery-{version}.js"));
+
             BundleTable.EnableOptimizations = true;
         }
     }

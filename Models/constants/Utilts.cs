@@ -10,84 +10,51 @@ namespace TTP_Project.Models.constants
     public static class Utilts
     {
 
-        private static WorkItem first = new WorkItem
+        private static WorkItem frontend = new WorkItem
         {
-            Name = "Test",
-            Description = "Make some work",
+            Name = "Making frontend",
+            Description = "Make all user interface",
             Status = TaskStatus.Initial,
-            Price = 300
-
+            Price = 50,
+            DueDate = DateTime.Now.AddMonths(1).Date
         };
 
-        private static WorkItem makeInterface = new WorkItem
+        private static WorkItem backend = new WorkItem
         {
-            Name = "Make Interfase",
-            Description = "Make",
+            Name = "Making backend",
+            Description = "Make all backend architecture",
             Status = TaskStatus.Initial,
-            Price = 100
+            Price = 50,
+            DueDate = DateTime.Now.AddMonths(1).Date
         };
 
-
-        private static WorkItem makeNewGraphics = new WorkItem
+        private static WorkItem database = new WorkItem
         {
-            Name = "New Graphics",
-            Description = "Make new graphics",
+            Name = "Making database",
+            Description = "Make all database config",
             Status = TaskStatus.Initial,
-            Price = 500
+            Price = 50,
+            DueDate = DateTime.Now.AddMonths(1).Date
         };
 
-        private static WorkItem makeBackEnd = new WorkItem
+        private static WorkItem payment = new WorkItem
         {
-            Name = "BackEnd",
-            Description = "Make back end ... ",
+            Name = "Making payment",
+            Description = "Make all payment config",
             Status = TaskStatus.Initial,
-            Price = 1500
+            Price = 50,
+            DueDate = DateTime.Now.AddMonths(1).Date
         };
 
-
-
-        private static WorkItem createDataBase = new WorkItem
+        private static WorkItem branding = new WorkItem
         {
-            Name = "DataBase",
-            Description = "It consist something special",
+            Name = "Making branding",
+            Description = "Make all branding",
             Status = TaskStatus.Initial,
-            Price = 400
+            Price = 50,
+            DueDate = DateTime.Now.AddMonths(1).Date
         };
 
-        private static WorkItem findResourses = new WorkItem
-        {
-            Name = "Resourse",
-            Description = "Find some something",
-            Status = TaskStatus.Initial,
-            Price = 700
-        };
-
-
-        private static WorkItem kakaatoHRENY = new WorkItem
-        {
-            Name = "TSILKOM NORMALNO",
-            Description = "Є моменти зроблені є не зроблені",
-            Status = TaskStatus.Initial,
-            Price = 1200
-        };
-
-
-        private static WorkItem propoyWORK = new WorkItem
-        {
-            Name = "Some amazing",
-            Description = "The one to rule them all",
-            Status = TaskStatus.Initial,
-            Price = 1000
-        };
-
-
-        private static WorkItem error = new WorkItem
-        {
-            Name = "Somethin wrong",
-            Description ="YOU WROTE SHITCODE",
-            Status = TaskStatus.Completed,
-            Price = 1
-        };
 
         public static ICollection<WorkItem>  GenericTasks(TemplateSiteTypes type)
         {
@@ -96,34 +63,32 @@ namespace TTP_Project.Models.constants
             switch (type)
             {
                 case TemplateSiteTypes.Blog:
-                    tasks.Add(makeInterface);
-                    tasks.Add(makeBackEnd);
+                    tasks.Add(frontend);
                     break;
                 case TemplateSiteTypes.VisitCard:
-                    tasks.Add(makeInterface);
-                    tasks.Add(makeNewGraphics);
+                    tasks.Add(frontend);
+                    tasks.Add(backend);
                     break;
-                case TemplateSiteTypes.Oficial:
-                    tasks.Add(makeInterface);
-                    tasks.Add(makeBackEnd);
-                    tasks.Add(findResourses);
+                case TemplateSiteTypes.Forum:
+                    tasks.Add(frontend);
+                    tasks.Add(backend);
+                    tasks.Add(database);
                     break;
-                case TemplateSiteTypes.Shop:
-                    tasks.Add(makeBackEnd);
-                    tasks.Add(makeNewGraphics);
-                    tasks.Add(createDataBase);
+                case TemplateSiteTypes.ECommerce:
+                    tasks.Add(frontend);
+                    tasks.Add(backend);
+                    tasks.Add(database);
+                    tasks.Add(payment);
                     break;
-                case TemplateSiteTypes.Amazing:
-                    tasks.Add(createDataBase);
-                    tasks.Add(kakaatoHRENY);
-                    tasks.Add(makeNewGraphics);
-                    tasks.Add(makeInterface);
-                    tasks.Add(makeBackEnd);
-                    tasks.Add(propoyWORK);
+                case TemplateSiteTypes.Enterprice:
+                    tasks.Add(frontend);
+                    tasks.Add(backend);
+                    tasks.Add(database);
+                    tasks.Add(payment);
+                    tasks.Add(branding);
                     break;
                 default:
-                    tasks.Add(error);
-                    break;
+                    return null;
             }
             return tasks;
         }
