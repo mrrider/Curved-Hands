@@ -110,6 +110,28 @@ namespace TTP_Project.Models
             success = this.AddUserToRole(userManager, user4.Id, RolesConst.PROGRAMER);
             if (!success) return success;
 
+            ApplicationUser user16 = new ApplicationUser();
+            user16.UserName = "programmer13@gmail.com";
+            user16.Email = "programmer13@gmail.com";
+            user16.RoleName = RolesConst.PROGRAMER;
+            user16.FistName = RolesConst.PROGRAMER;
+            user16.LastName = RolesConst.PROGRAMER;
+            user16.EmailConfirmed = true;
+            IdentityResult result16 = userManager.Create(user16, "Pas@123");
+            success = this.AddUserToRole(userManager, user16.Id, RolesConst.PROGRAMER);
+            if (!success) return success;
+
+            ApplicationUser user17 = new ApplicationUser();
+            user17.UserName = "programmer163@gmail.com";
+            user17.Email = "programmer513@gmail.com";
+            user17.RoleName = RolesConst.PROGRAMER;
+            user17.FistName = RolesConst.PROGRAMER;
+            user17.LastName = RolesConst.PROGRAMER;
+            user17.EmailConfirmed = true;
+            IdentityResult result17 = userManager.Create(user17, "Pas@123");
+            success = this.AddUserToRole(userManager, user17.Id, RolesConst.PROGRAMER);
+            if (!success) return success;
+
             ApplicationUser user5 = new ApplicationUser();
             user5.UserName = "operator@gmail.com";
             user5.Email = "operator@gmail.com";
@@ -234,7 +256,7 @@ namespace TTP_Project.Models
                 Description = "Create frontend blog",
                 DueDate = DateTime.Today + (new TimeSpan(12, 20, 20)),
                 Status = TaskStatus.InProgress,
-                AssignedWorker = user4
+                AssignedWorker = user17
             };
             this.WorkItems.Add(workItem);
 
@@ -243,7 +265,8 @@ namespace TTP_Project.Models
                 Name = "Шаблон 2",
                 Description = "blablabla",
                 DueDate = DateTime.Today + (new TimeSpan(12, 20, 20)),
-                Status = TaskStatus.InProgress
+                Status = TaskStatus.InProgress,
+                AssignedWorker = user16
             };
             this.WorkItems.Add(workItem1);
 

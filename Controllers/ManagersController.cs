@@ -17,6 +17,7 @@ namespace TTP_Project.Controllers
     public class ManagersController : Controller
     {
         UnitOfWork unitOfWork = new UnitOfWork();
+
         [Authorize(Roles = "Managers")] 
         public ActionResult Index()
         {
@@ -79,6 +80,7 @@ namespace TTP_Project.Controllers
             }
             WorkItem item = unitOfWork.WorkItemRepository.GetByID(id);
             IEnumerable<ApplicationUser> them = unitOfWork.UserRepository.Get().Where(s => s.RoleName.Equals(RolesConst.PROGRAMER));
+            
             ViewBag.programmers = them;
 
             if (item == null)
@@ -94,8 +96,11 @@ namespace TTP_Project.Controllers
         public ActionResult EditTask(WorkItemViewModel model)
         {
 
+            string newAssignWorkerUsername = Request.Form["AssignedWorker"].ToString();
+            ApplicationUser newAssignUser = unitOfWork.UserRepository.Get().Where(s => s.UserName.Equals(newAssignWorkerUsername)).SingleOrDefault();
             WorkItem item = unitOfWork.WorkItemRepository.GetByID(model.Id);
-            item.AssignedWorker= model.AssignedWorker;
+
+            item.AssignedWorker= newAssignUser;
             unitOfWork.WorkItemRepository.Update(item);
             unitOfWork.Save();
 
