@@ -10,7 +10,7 @@ namespace TTP_Project.Models.constants
         public const string ADMIN = "Admin";
         public const string CUSTOMER = "Customer";
         public const string DEVELOPER = "Developer";
-        public const string POJECT_MANAGER = "Project Manager";
+        public const string PROJECT_MANAGER = "Project Manager";
         public const string ORDER_MANAGER = "Order Manager";
         public const string ACCOUNT_MANAGER = "Account manager";
     }

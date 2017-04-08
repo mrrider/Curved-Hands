@@ -67,7 +67,6 @@ namespace TTP_Project.Models.entities
         [StringLength(1024)]
         public string ItemPictureUrl { get; set; }
         
-        public virtual List<OrderDetail> OrderDetails { get; set; }
 
         public TemplateSiteTypes Categorie { get; set; }
 

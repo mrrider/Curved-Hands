@@ -76,19 +76,19 @@ namespace TTP_Project.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,FistName,LastName,Organization,City,Country,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Salary,startWorkDate")] Worker worker)
-        {
-            if (ModelState.IsValid)
-            {
-                //db.Users.Add(worker);
-              //db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include="Id,FistName,LastName,Organization,City,Country,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Salary,startWorkDate")] Worker worker)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        //db.Users.Add(worker);
+        //      //db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(worker);
-        }
+        //    return View(worker);
+        //}
 
         // GET: /Worker/Edit/5
         public ActionResult Edit(int  id)

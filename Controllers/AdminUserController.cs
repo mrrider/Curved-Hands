@@ -116,7 +116,7 @@ namespace TTP_Project.Controllers
             {
                 var role = model.RoleName;
 
-                var user = new Customer()
+                var user = new ApplicationUser()
                 {
                     UserName = model.Email,
                     Email = model.Email,

@@ -60,12 +60,12 @@ namespace TTP_Project.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
-                    MigrateShoppingCart(user.UserName);
+                    MigrateShoppingCart(user.Email);
                     return RedirectToLocal(returnUrl);
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ModelState.AddModelError("", "Invalid email or password.");
                 }
             }
 
@@ -85,16 +85,16 @@ namespace TTP_Project.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new Customer() { 
-                    UserName = model.Email,
+                var user = new ApplicationUser() { 
+                    UserName = model.UserName,
                     Email = model.Email,
                     FistName = model.FistName,
                     LastName = model.LastName,
                     Organization = model.Organization,
                     City = model.City,
                     Country = model.Country,
-                    RoleName = RolesConst.CUSTOMER
-
+                    RoleName = RolesConst.CUSTOMER,
+                    Orders = new List<Order>()
                 };
                
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -105,7 +105,7 @@ namespace TTP_Project.Controllers
                     UserManager.Update(user);
                     await SignInAsync(user, isPersistent: false);
 
-                    MigrateShoppingCart(user.UserName);
+                    MigrateShoppingCart(user.Email);
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -272,12 +272,12 @@ namespace TTP_Project.Controllers
             return View(model);
         }
 
-        private void MigrateShoppingCart(string UserName)
+        private void MigrateShoppingCart(string Email)
         {
             var cart = OrderCart.GetCart(this.HttpContext);
 
-            cart.MigrateCart(UserName);
-            Session[OrderCart.CartSessionKey] = UserName;
+            cart.MigrateCart(Email);
+            Session[OrderCart.CartSessionKey] = Email;
         }
         
         [HttpPost]

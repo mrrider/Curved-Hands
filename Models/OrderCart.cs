@@ -123,20 +123,12 @@ namespace TTP_Project.Models
             // adding the order details for each
             foreach (var item in cartItems)
             {
-                var orderDetail = new OrderDetail
-                {
-                    ItemId = item.ProductItemId,
-                    OrderId = order.OrderId,
-                    UnitPrice = item.ProductItem.Price,
-                    Quantity = item.Count
-                };
                 
                 //order.orderItems.Add(item.ProductItem);
                 // Set the order total of the shopping cart
                 orderTotal += (item.Count * item.ProductItem.Price);
 
-                unitOfWork.OrderDetailRepository.Insert(orderDetail);
- 
+               
             }
             // Set the order's total to the orderTotal count
             order.Total = orderTotal;

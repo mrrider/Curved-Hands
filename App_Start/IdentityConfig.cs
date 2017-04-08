@@ -27,6 +27,7 @@ namespace TTP_Project
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
+
             };
 
             manager.PasswordValidator = new PasswordValidator

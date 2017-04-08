@@ -35,10 +35,10 @@ namespace TTP_Project.Controllers
 
             order.OrderDate = DateTime.Now;
             order.completeDate = DateTime.Now;
-            order.orderStartus = OrderStatus.Initiating;
+            order.orderStartus = OrderStatus.Initial;
             order.detailDescription = values[0];
                    
-            order.customer = (Customer) unitOfWork.CustomerRepository.dbSet.Where(s => s.UserName.Equals(User.Identity.Name)).First();  
+            order.customer = (ApplicationUser) unitOfWork.UserRepository.dbSet.Where(s => s.UserName.Equals(User.Identity.Name)).First();  
             
             unitOfWork.OrderRepository.Insert(order);
             unitOfWork.Save();

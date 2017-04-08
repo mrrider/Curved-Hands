@@ -21,7 +21,7 @@ namespace TTP_Project.Controllers
         
         public ActionResult Index()
         {
-            activeOrders  = unitOfWork.OrderRepository.Get().Where(s => s.orderStartus.Equals(OrderStatus.Initiating));
+            activeOrders  = unitOfWork.OrderRepository.Get().Where(s => s.orderStartus.Equals(OrderStatus.Initial));
             return View(activeOrders);
         }
 
@@ -37,7 +37,7 @@ namespace TTP_Project.Controllers
         public ActionResult Confrim(int? id)
         {
 
-            IEnumerable<ApplicationUser> them = unitOfWork.UserRepository.Get().Where(s => s.RoleName.Equals(RolesConst.MANAGER));
+            IEnumerable<ApplicationUser> them = unitOfWork.UserRepository.Get().Where(s => s.RoleName.Equals(RolesConst.ORDER_MANAGER));
 
             ViewBag.pm = them;
             Project proj = new Project();
@@ -53,12 +53,12 @@ namespace TTP_Project.Controllers
             {
                 Order ord = unitOfWork.OrderRepository.GetByID(pro.id);
 
-                ord.orderStartus = OrderStatus.Processiong;
+                ord.orderStartus = OrderStatus.Initial;
                 unitOfWork.OrderRepository.Update(ord);
                
                 pro.order = ord;
                 pro.costs = ord.Total;
-                IEnumerable<ApplicationUser> them =  unitOfWork.UserRepository.Get().Where(s => s.RoleName.Equals(RolesConst.MANAGER));
+                IEnumerable<ApplicationUser> them =  unitOfWork.UserRepository.Get().Where(s => s.RoleName.Equals(RolesConst.ORDER_MANAGER));
                 foreach (ApplicationUser manager in them)
                 {
                     if (manager.UserName.Equals(pro.nameProjectManager))

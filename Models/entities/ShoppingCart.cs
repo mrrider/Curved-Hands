@@ -138,25 +138,15 @@ namespace TTP_Project.Models.entities
         public Order CreateOrder(Order order)
         {
             decimal orderTotal = 0;
-            order.OrderDetails = new List<OrderDetail>();
 
             var cartItems = GetCartItems();
             // Iterate over the items in the cart, 
             // adding the order details for each
             foreach (var item in cartItems)
             {
-                var orderDetail = new OrderDetail
-                {
-                    ItemId = item.ProductItemId,
-                    OrderId = order.OrderId,
-                    UnitPrice = item.ProductItem.Price,
-                    Quantity = item.Count
-                };
+                
                 // Set the order total of the shopping cart
                 orderTotal += (item.Count * item.ProductItem.Price);
-                order.OrderDetails.Add(orderDetail);
-                unityOfWork.OrderDetailRepository.Insert(orderDetail);
-
             }
             // Set the order's total to the orderTotal count
             order.Total = orderTotal;

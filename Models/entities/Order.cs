@@ -28,13 +28,9 @@ namespace TTP_Project.Models.entities
 
         [ScaffoldColumn(false)]
         public decimal Total { get; set; }
-
-        public List<OrderDetail> OrderDetails { get; set; }
-
-        public Customer customer { get; set; }
-
-        public bool SaveInfo { get; set; }
-
+        
+        public ApplicationUser customer { get; set; }
+        
         public string ToString(Order order)
         {
             StringBuilder bob = new StringBuilder();
@@ -47,22 +43,22 @@ namespace TTP_Project.Models.entities
             string header = "<tr> <th>Item Name</th>" + "<th>Quantity</th>" + "<th>Price</th> <th></th> </tr>";
             bob.Append(header).AppendLine();
 
-            String output = String.Empty;
-            try
-            {
-                foreach (var item in order.OrderDetails)
-                {
-                    bob.Append("<tr>");
-                    output = "<td>" + item .Item.Name+ "</td>" + "<td>" + item.Quantity + "</td>" + "<td>" + item.Quantity * item.UnitPrice + "</td>";
-                    bob.Append(output).AppendLine();
-                    Console.WriteLine(output);
-                    bob.Append("</tr>");
-                }
-            }
-            catch (Exception ex)
-            {
-                output = "No items ordered.";
-            }
+            //String output = String.Empty;
+            //try
+            //{
+            //    foreach (var item in order.OrderDetails)
+            //    {
+            //        bob.Append("<tr>");
+            //        output = "<td>" + item .Item.Name+ "</td>" + "<td>" + item.Quantity + "</td>" + "<td>" + item.Quantity * item.UnitPrice + "</td>";
+            //        bob.Append(output).AppendLine();
+            //        Console.WriteLine(output);
+            //        bob.Append("</tr>");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    output = "No items ordered.";
+            //}
             bob.Append("</Table>");
             bob.Append("<b>");
 

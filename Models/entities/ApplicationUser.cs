@@ -14,13 +14,16 @@ namespace TTP_Project.Models.entities
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
             return userIdentity;
         }
         public ICollection<ApplicationUserRole> UserRoles { get; set; }
 
+
+        [Required]
+        public override string UserName { get; set; }
+        [Required]
+        public override string Email { get; set; }
         [Required]
         public string FistName { get; set; }
         [Required]
@@ -28,9 +31,9 @@ namespace TTP_Project.Models.entities
         public string Organization { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-         [Required]
+        [Required]
         public string RoleName { get; set; }
 
-        public virtual ICollection<Order> orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

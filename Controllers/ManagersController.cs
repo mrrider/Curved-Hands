@@ -79,7 +79,7 @@ namespace TTP_Project.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             WorkItem item = unitOfWork.WorkItemRepository.GetByID(id);
-            IEnumerable<ApplicationUser> them = unitOfWork.UserRepository.Get().Where(s => s.RoleName.Equals(RolesConst.PROGRAMER));
+            IEnumerable<ApplicationUser> them = unitOfWork.UserRepository.Get().Where(s => s.RoleName.Equals(RolesConst.DEVELOPER));
             
             ViewBag.programmers = them;
 

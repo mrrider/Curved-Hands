@@ -2,19 +2,6 @@
 
 namespace TTP_Project.Models
 {
-
-    public class GuestViewModel
-    {
-        [Required]
-        [Display(Name = "Email")]
-        public string GuestAcct { get; set; }
-
-        [Required]
-        [Display(Name = "Password")]
-        public string GuestPassword { get; set; }
-
-    }
-
     public class ManageUserViewModel
     {
         [Required]
@@ -37,7 +24,6 @@ namespace TTP_Project.Models
     public class LoginViewModel
     {
         [Required]
-        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -52,6 +38,11 @@ namespace TTP_Project.Models
 
     public class RegisterViewModel
     {
+
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -67,14 +58,19 @@ namespace TTP_Project.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
         [Required]
         [Display(Name = "First Name")]
         public string FistName { get; set; }
+
         [Required]
         [Display(Name="Last Name")]
         public string LastName { get; set; }
+
         public string Organization { get; set; }
+
         public string City { get; set; }
+
         public string Country { get; set; }
        
     }
@@ -103,7 +99,6 @@ namespace TTP_Project.Models
     public class ForgotPasswordViewModel
     {
         [Required]
-        [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }

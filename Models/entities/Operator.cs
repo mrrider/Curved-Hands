@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TTP_Project.Models.entities
 {
-    public class Operator : Worker
+    public class Operator : ApplicationUser
     {
     }
 }

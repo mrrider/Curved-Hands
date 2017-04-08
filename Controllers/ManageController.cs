@@ -65,9 +65,7 @@ namespace TTP_Project.Controllers
 
         public ActionResult RemoveLogin()
         {
-            if (User.Identity.Name.Equals("guest@guest.com"))
-                return RedirectToAction("GuestIndex");
-
+            
             var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
             ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
             return View(linkedAccounts);
@@ -77,9 +75,7 @@ namespace TTP_Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
         {
-            if (User.Identity.Name.Equals("guest@guest.com"))
-                return RedirectToAction("GuestIndex");
-
+            
             ManageMessageId? message;
             var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
             if (result.Succeeded)

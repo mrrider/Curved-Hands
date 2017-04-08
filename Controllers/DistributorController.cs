@@ -17,29 +17,26 @@ namespace TTP_Project.Controllers
         public ActionResult Index()
         {
             
-            if (User.IsInRole(RolesConst.PROGRAMER))
+            if (User.IsInRole(RolesConst.DEVELOPER))
             {
-                return RedirectToAction("Index", RolesConst.PROGRAMER);
+                return RedirectToAction("Index", RolesConst.DEVELOPER);
             }
-            if (User.IsInRole(RolesConst.OPERATOR))
+            if (User.IsInRole(RolesConst.ORDER_MANAGER))
             {
-                return RedirectToAction("Index", RolesConst.OPERATOR);
+                return RedirectToAction("Index", RolesConst.ORDER_MANAGER);
             }
-            if (User.IsInRole(RolesConst.RESOURSE_MANAGER))
+            if (User.IsInRole(RolesConst.PROJECT_MANAGER))
             {
-                return RedirectToAction("Index", RolesConst.RESOURSE_MANAGER+"s");
+                return RedirectToAction("Index", RolesConst.PROJECT_MANAGER + "s");
             }
-            if (User.IsInRole(RolesConst.ORDER_OPERATOR))
-            {
-                return RedirectToAction("Index", RolesConst.ORDER_OPERATOR);
-            }
+            
             if(User.IsInRole(RolesConst.CUSTOMER))
             {
                 return RedirectToAction("Index", RolesConst.CUSTOMER);
             }
-            if (User.IsInRole(RolesConst.MANAGER))
+            if (User.IsInRole(RolesConst.ACCOUNT_MANAGER))
             {
-                return RedirectToAction("Index", RolesConst.MANAGER);
+                return RedirectToAction("Index", RolesConst.ACCOUNT_MANAGER);
             }
             return RedirectToAction("About", "Home");;
         }
