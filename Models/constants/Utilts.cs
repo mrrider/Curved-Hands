@@ -15,8 +15,7 @@ namespace TTP_Project.Models.constants
             Name = "Making frontend",
             Description = "Make all user interface",
             Status = TaskStatus.Initial,
-            Price = 50,
-            DueDate = DateTime.Now.AddMonths(1).Date
+            Price = 50
         };
 
         private static WorkItem backend = new WorkItem
@@ -24,8 +23,7 @@ namespace TTP_Project.Models.constants
             Name = "Making backend",
             Description = "Make all backend architecture",
             Status = TaskStatus.Initial,
-            Price = 50,
-            DueDate = DateTime.Now.AddMonths(1).Date
+            Price = 50
         };
 
         private static WorkItem database = new WorkItem
@@ -33,8 +31,7 @@ namespace TTP_Project.Models.constants
             Name = "Making database",
             Description = "Make all database config",
             Status = TaskStatus.Initial,
-            Price = 50,
-            DueDate = DateTime.Now.AddMonths(1).Date
+            Price = 50
         };
 
         private static WorkItem payment = new WorkItem
@@ -42,8 +39,7 @@ namespace TTP_Project.Models.constants
             Name = "Making payment",
             Description = "Make all payment config",
             Status = TaskStatus.Initial,
-            Price = 50,
-            DueDate = DateTime.Now.AddMonths(1).Date
+            Price = 50
         };
 
         private static WorkItem branding = new WorkItem
@@ -51,8 +47,7 @@ namespace TTP_Project.Models.constants
             Name = "Making branding",
             Description = "Make all branding",
             Status = TaskStatus.Initial,
-            Price = 50,
-            DueDate = DateTime.Now.AddMonths(1).Date
+            Price = 50
         };
 
 

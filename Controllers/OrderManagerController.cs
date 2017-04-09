@@ -46,7 +46,22 @@ namespace TTP_Project.Controllers
             proj.projectStatus = ProjectStatus.Initial;
             proj.order = ord;
             List<WorkItem> wkItems = new List<WorkItem>();
-            IDictionary<int, int> prItems = ord.orderItemsIds;
+            string listItems = ord.orderItemsIds;
+            IDictionary<int, int> prItems = new Dictionary<int, int>();
+
+            string[] wkitem = listItems.Split(';');
+            foreach(string k in wkitem)
+            {
+                
+                    string[] u = k.Split(':');
+                    if (u.Length > 1)
+                    {
+                        
+                        int key = int.Parse(u[0]);
+                        int value = int.Parse(u[1]);
+                        prItems.Add(key, value);
+                    }
+            }
             foreach(KeyValuePair<int, int> kvp in prItems)
             {
                 ProductItem pr = unitOfWork.ProductItemRepository.GetByID(kvp.Key);
@@ -68,9 +83,6 @@ namespace TTP_Project.Controllers
             {
                 Order ord = unitOfWork.OrderRepository.GetByID(pro.id);
 
-                ord.orderStartus = OrderStatus.InProgress;
-                unitOfWork.OrderRepository.Update(ord);
-               
                 pro.order = ord;
                 pro.costs = ord.Total;
                 IEnumerable<ApplicationUser> them =  unitOfWork.UserRepository.Get().Where(s => s.RoleName.Equals(RolesConst.PROJECT_MANAGER));
@@ -82,7 +94,51 @@ namespace TTP_Project.Controllers
               
                 pro.projectStatus = ProjectStatus.Initial;
 
+
+
+                List<WorkItem> wkItems = new List<WorkItem>();
+                string listItems = ord.orderItemsIds;
+                IDictionary<int, int> prItems = new Dictionary<int, int>();
+
+                string[] wkitem = listItems.Split(';');
+                foreach (string k in wkitem)
+                {
+
+                    string[] u = k.Split(':');
+                    if (u.Length > 1)
+                    {
+
+                        int key = int.Parse(u[0]);
+                        int value = int.Parse(u[1]);
+                        prItems.Add(key, value);
+                    }
+                }
+                foreach (KeyValuePair<int, int> kvp in prItems)
+                {
+                    ProductItem pr = unitOfWork.ProductItemRepository.GetByID(kvp.Key);
+                    List<WorkItem> wk = Utilts.GenericTasks(pr.Categorie).ToList();
+                    for (int i = 0; i < kvp.Value; i++)
+                        wkItems.AddRange(wk);
+                }
                 unitOfWork.ProjectRepository.Insert(pro);
+                unitOfWork.Save();
+
+                foreach (WorkItem wk in wkItems)
+                {
+                    wk.assignedProject = pro;
+                    wk.DueDate = DateTime.Now.AddMonths(1).Date;
+                    wk.DateCreated = DateTime.Now.Date;
+                    unitOfWork.WorkItemRepository.Insert(wk);
+                    unitOfWork.Save();
+
+                }
+                
+                pro.tasks = wkItems;
+
+                unitOfWork.ProjectRepository.Update(pro);
+                ord.orderStartus = OrderStatus.InProgress;
+                unitOfWork.OrderRepository.Update(ord);
+
                 unitOfWork.Save();
 
                 return RedirectToAction("Index");

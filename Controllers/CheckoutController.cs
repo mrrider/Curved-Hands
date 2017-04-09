@@ -37,7 +37,7 @@ namespace TTP_Project.Controllers
             order.completeDate = DateTime.Now.AddDays(7).Date;
             order.orderStartus = OrderStatus.Initial;
             order.detailDescription = values[0];
-            order.orderItemsIds = new Dictionary<int,int>();  
+            order.orderItemsIds = ""; 
             order.customer = unitOfWork.UserRepository.dbSet.Where(s => s.UserName.Equals(User.Identity.Name)).First(); 
             //There we send new customer order to order-operator
             

@@ -123,10 +123,12 @@ namespace TTP_Project.Models
         public int CreateOrder(Order order)
         {
             order.Total = this.GetTotal();
+            string itemList = "";
             foreach (Cart item in this.GetCartItems())
             {
-                order.orderItemsIds.Add(item.ProductItemId, item.Count);
+                itemList += item.ProductItemId + ":" + item.Count + ";";
             }
+            order.orderItemsIds = itemList;
             unitOfWork.Save();
             EmptyCart();
             return order.OrderId;

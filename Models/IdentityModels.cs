@@ -119,6 +119,17 @@ namespace TTP_Project.Models
             if (!success) return success;
 
 
+            ApplicationUser developer = new ApplicationUser();
+            developer.UserName = "developer";
+            developer.Email = "developer@developer.com";
+            developer.RoleName = RolesConst.DEVELOPER;
+            developer.FistName = RolesConst.DEVELOPER;
+            developer.LastName = RolesConst.DEVELOPER;
+            IdentityResult developerResult = userManager.Create(developer, "Pas@123");
+            success = this.AddUserToRole(userManager, developer.Id, RolesConst.DEVELOPER);
+            if (!success) return success;
+
+
             //Catagorie blog = new Catagorie()
             //{
             //    Name = "Blog"

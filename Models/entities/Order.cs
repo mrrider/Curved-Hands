@@ -22,7 +22,7 @@ namespace TTP_Project.Models.entities
 
         public OrderStatus orderStartus { get; set; }
 
-        public virtual IDictionary<int, int> orderItemsIds { get; set; }
+        public string orderItemsIds { get; set; }
 
         public String detailDescription { get; set; }
 

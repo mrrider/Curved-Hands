@@ -27,7 +27,7 @@ namespace TTP_Project.Controllers
             }
             if (User.IsInRole(RolesConst.PROJECT_MANAGER))
             {
-                return RedirectToAction("Index", RolesConst.PROJECT_MANAGER + "s");
+                return RedirectToAction("Index", RolesConst.PROJECT_MANAGER);
             }
             
             if(User.IsInRole(RolesConst.CUSTOMER))
