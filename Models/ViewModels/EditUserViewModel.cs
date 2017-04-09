@@ -9,9 +9,7 @@ namespace TTP_Project.Models.ViewModels
 {
     public class EditUserViewModel
     {
-        // public string UserName { get; set; }
-        //  [Required]
-        //public string Email { get; set; }
+        public string Id { get; set; }
         [Required]
         public string FistName { get; set; }
         [Required]
@@ -19,12 +17,8 @@ namespace TTP_Project.Models.ViewModels
         public string Organization { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        // [Required]
-        //  public string Password { get; set; }
-        public string Role { get; set; }
         [Required]
-        // public string RoleName { get; set; }
-        public string Id { get; set; }
+        public string Role { get; set; }
 
 
         public EditUserViewModel() { }
@@ -39,9 +33,7 @@ namespace TTP_Project.Models.ViewModels
             this.City = user.City;
             this.Country = user.Country;
             this.Role = user.RoleName;
-            //this.Password = user.PasswordHash;
-            //this.RoleName = user.RoleName;
-            this.Id = user.Id;
+            
         }
     }
 }

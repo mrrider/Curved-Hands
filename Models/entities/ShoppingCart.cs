@@ -10,8 +10,9 @@ namespace TTP_Project.Models.entities
     public partial class ShoppingCart
     {
         UnitOfWork unityOfWork = new UnitOfWork();
-       // ApplicationDbContext storeDB = new ApplicationDbContext();
+        
         string ShoppingCartId { get; set; }
+
         public const string CartSessionKey = "CartId";
 
         public static ShoppingCart GetCart(HttpContextBase context)

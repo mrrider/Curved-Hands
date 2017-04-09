@@ -110,6 +110,20 @@ namespace TTP_Project.Models.repository
             }
         }
 
+        public GenericRepository<Finances> FinancesRepository
+        {
+            get
+            {
+
+                if (this.financesRepository == null)
+                {
+                    this.financesRepository = new GenericRepository<Finances>(context);
+                }
+                return financesRepository;
+            }
+        }
+
+
         public void Save()
         {
             context.SaveChanges();

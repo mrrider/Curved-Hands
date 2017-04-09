@@ -22,7 +22,7 @@ namespace TTP_Project.Models.entities
 
         public OrderStatus orderStartus { get; set; }
 
-        public virtual ICollection<ProductItem> orderItems { get; set; }
+        public virtual IDictionary<int, int> orderItemsIds { get; set; }
 
         public String detailDescription { get; set; }
 
@@ -43,22 +43,6 @@ namespace TTP_Project.Models.entities
             string header = "<tr> <th>Item Name</th>" + "<th>Quantity</th>" + "<th>Price</th> <th></th> </tr>";
             bob.Append(header).AppendLine();
 
-            //String output = String.Empty;
-            //try
-            //{
-            //    foreach (var item in order.OrderDetails)
-            //    {
-            //        bob.Append("<tr>");
-            //        output = "<td>" + item .Item.Name+ "</td>" + "<td>" + item.Quantity + "</td>" + "<td>" + item.Quantity * item.UnitPrice + "</td>";
-            //        bob.Append(output).AppendLine();
-            //        Console.WriteLine(output);
-            //        bob.Append("</tr>");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    output = "No items ordered.";
-            //}
             bob.Append("</Table>");
             bob.Append("<b>");
 

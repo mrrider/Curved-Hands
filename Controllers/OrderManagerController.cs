@@ -13,7 +13,7 @@ using TTP_Project.Models.constants;
 
 namespace TTP_Project.Controllers
 {
-    public class OrderOperatorController : Controller
+    public class OrderManagerController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private UnitOfWork unitOfWork = new UnitOfWork();
@@ -37,10 +37,25 @@ namespace TTP_Project.Controllers
         public ActionResult Confrim(int? id)
         {
 
-            IEnumerable<ApplicationUser> them = unitOfWork.UserRepository.Get().Where(s => s.RoleName.Equals(RolesConst.ORDER_MANAGER));
+            IEnumerable<ApplicationUser> them = unitOfWork.UserRepository.Get().Where(s => s.RoleName.Equals(RolesConst.PROJECT_MANAGER));
+            Order ord = unitOfWork.OrderRepository.GetByID(id);
 
             ViewBag.pm = them;
             Project proj = new Project();
+            proj.costs = ord.Total;
+            proj.projectStatus = ProjectStatus.Initial;
+            proj.order = ord;
+            List<WorkItem> wkItems = new List<WorkItem>();
+            IDictionary<int, int> prItems = ord.orderItemsIds;
+            foreach(KeyValuePair<int, int> kvp in prItems)
+            {
+                ProductItem pr = unitOfWork.ProductItemRepository.GetByID(kvp.Key);
+                List<WorkItem> wk = Utilts.GenericTasks(pr.Categorie).ToList();
+                for(int i = 0; i < kvp.Value; i++)
+                    wkItems.AddRange(wk);
+            }
+
+            proj.tasks = wkItems;
            
             return View(proj);
         }
@@ -53,12 +68,12 @@ namespace TTP_Project.Controllers
             {
                 Order ord = unitOfWork.OrderRepository.GetByID(pro.id);
 
-                ord.orderStartus = OrderStatus.Initial;
+                ord.orderStartus = OrderStatus.InProgress;
                 unitOfWork.OrderRepository.Update(ord);
                
                 pro.order = ord;
                 pro.costs = ord.Total;
-                IEnumerable<ApplicationUser> them =  unitOfWork.UserRepository.Get().Where(s => s.RoleName.Equals(RolesConst.ORDER_MANAGER));
+                IEnumerable<ApplicationUser> them =  unitOfWork.UserRepository.Get().Where(s => s.RoleName.Equals(RolesConst.PROJECT_MANAGER));
                 foreach (ApplicationUser manager in them)
                 {
                     if (manager.UserName.Equals(pro.nameProjectManager))

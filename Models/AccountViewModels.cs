@@ -24,7 +24,7 @@ namespace TTP_Project.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "User Name")]
         public string Email { get; set; }
 
         [Required]

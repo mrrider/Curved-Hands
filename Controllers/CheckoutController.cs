@@ -34,28 +34,25 @@ namespace TTP_Project.Controllers
             TryUpdateModel(order);
 
             order.OrderDate = DateTime.Now;
-            order.completeDate = DateTime.Now;
+            order.completeDate = DateTime.Now.AddDays(7).Date;
             order.orderStartus = OrderStatus.Initial;
             order.detailDescription = values[0];
-                   
-            order.customer = (ApplicationUser) unitOfWork.UserRepository.dbSet.Where(s => s.UserName.Equals(User.Identity.Name)).First();  
+            order.orderItemsIds = new Dictionary<int,int>();  
+            order.customer = unitOfWork.UserRepository.dbSet.Where(s => s.UserName.Equals(User.Identity.Name)).First(); 
+            //There we send new customer order to order-operator
             
-            unitOfWork.OrderRepository.Insert(order);
-            unitOfWork.Save();
             var cart = OrderCart.GetCart(this);
             cart.CreateOrder(order);
+            unitOfWork.OrderRepository.Insert(order);
             unitOfWork.Save();
 
-            return RedirectToAction("Complete",
-                new { id = order.OrderId });
+            return RedirectToAction("Complete", new { id = order.OrderId });
                    
         }
         
         public ActionResult Complete(int id)
         {
-            bool isValid = unitOfWork.OrderRepository.dbSet.Any(
-                o => o.OrderId == id &&
-                o.customer.UserName == User.Identity.Name);
+            bool isValid = unitOfWork.OrderRepository.dbSet.Any(o => o.OrderId == id && o.customer.UserName == User.Identity.Name);
 
             if (isValid)
             {

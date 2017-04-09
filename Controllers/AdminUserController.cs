@@ -21,9 +21,11 @@ using PagedList;
 
 namespace TTP_Project.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminUserController : Controller
     {        
         private ApplicationUserManager _userManager;
+
         private UnitOfWork unityOfWork = new UnitOfWork();
 
         public AdminUserController()
@@ -48,7 +50,7 @@ namespace TTP_Project.Controllers
 
         private ApplicationDbContext _db = new ApplicationDbContext();
 
-        [AllowAnonymous]
+   
         [Authorize(Roles = "Admin")]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString,int? page)
         {
@@ -92,7 +94,7 @@ namespace TTP_Project.Controllers
                 var moselItem = new AdminUserViewModel(role);
                 rolesList.Add(moselItem);
             }
-            int pageSize = 10;
+            int pageSize = 15;
             int pageNumber = (page ?? 1);
             return View(rolesList.ToPagedList(pageNumber, pageSize));
             
@@ -106,7 +108,6 @@ namespace TTP_Project.Controllers
         }
         
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
          public ActionResult Create(AdminUserViewModel model)
@@ -125,7 +126,8 @@ namespace TTP_Project.Controllers
                     Organization = model.Organization,
                     City = model.City,
                     Country = model.Country,
-                    RoleName = model.RoleName
+                    RoleName = model.RoleName,
+                    Orders = new List<Order>()
                 };
               
 
@@ -170,7 +172,7 @@ namespace TTP_Project.Controllers
         {
             if (ModelState.IsValid)
             {
-               ApplicationUser user =unityOfWork.UserRepository.GetByID(model.Id);
+               ApplicationUser user = unityOfWork.UserRepository.GetByID(model.Id);
                user.LastName = model.LastName;
                user.FistName = model.FistName;
                user.Country = model.Country;

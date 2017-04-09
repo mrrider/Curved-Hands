@@ -9,15 +9,20 @@ using TTP_Project.Models.repository;
 namespace TTP_Project.Models
 {
     public class OrderCart{
+
         UnitOfWork unitOfWork = new UnitOfWork();
+
         string OrderCartId { get; set; }
+
         public const string CartSessionKey = "CartId";
+
         public static OrderCart GetCart(HttpContextBase context)
         {
             var cart = new OrderCart();
             cart.OrderCartId = cart.GetCartId(context);
             return cart;
         }
+        
         // Helper method to simplify shopping cart calls
         public static OrderCart GetCart(Controller controller)
         {
@@ -114,31 +119,19 @@ namespace TTP_Project.Models
 
             return total ?? decimal.Zero;
         }
+
         public int CreateOrder(Order order)
         {
-            decimal orderTotal = 0;
- 
-            var cartItems = GetCartItems();
-            // Iterate over the items in the cart, 
-            // adding the order details for each
-            foreach (var item in cartItems)
+            order.Total = this.GetTotal();
+            foreach (Cart item in this.GetCartItems())
             {
-                
-                //order.orderItems.Add(item.ProductItem);
-                // Set the order total of the shopping cart
-                orderTotal += (item.Count * item.ProductItem.Price);
-
-               
+                order.orderItemsIds.Add(item.ProductItemId, item.Count);
             }
-            // Set the order's total to the orderTotal count
-            order.Total = orderTotal;
-
-          
-            // Empty the shopping cart
+            unitOfWork.Save();
             EmptyCart();
-            // Return the OrderId as the confirmation number
             return order.OrderId;
         }
+
         // We're using HttpContextBase to allow access to cookies.
         public string GetCartId(HttpContextBase context)
         {

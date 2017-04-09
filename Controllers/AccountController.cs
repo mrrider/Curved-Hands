@@ -100,7 +100,7 @@ namespace TTP_Project.Controllers
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    UserManager.AddToRole(user.Id, "Customer");
+                    UserManager.AddToRole(user.Id, RolesConst.CUSTOMER);
                     user.RoleName = UserManager.GetRoles(user.Id).First();
                     UserManager.Update(user);
                     await SignInAsync(user, isPersistent: false);

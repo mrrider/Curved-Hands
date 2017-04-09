@@ -10,6 +10,7 @@ namespace TTP_Project.Models.ViewModels
 {
     public class AdminUserViewModel
     {
+        [Required]
         public string UserName { get; set; }
          [Required]
         public string Email { get; set; }
@@ -26,6 +27,7 @@ namespace TTP_Project.Models.ViewModels
         [Required]
         public string RoleName { get; set; }
         public string Id { get; set; }
+
 
 
         public AdminUserViewModel() { }

@@ -52,8 +52,7 @@ namespace TTP_Project.Controllers
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
-                PhoneNumber = await UserManager.GetPhoneNumberAsync(User.Identity.GetUserId()),
-                Logins = await UserManager.GetLoginsAsync(User.Identity.GetUserId())
+                PhoneNumber = await UserManager.GetPhoneNumberAsync(User.Identity.GetUserId())
             };
             return View(model);
         }
@@ -223,30 +222,6 @@ namespace TTP_Project.Controllers
 
             return View(model);
         }
-
-        public async Task<ActionResult> ManageLogins(ManageMessageId? message)
-        {
-            if (User.Identity.Name.Equals("guest@guest.com"))
-                return RedirectToAction("GuestIndex");
-
-            ViewBag.StatusMessage =
-                message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : "";
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            if (user == null)
-            {
-                return View("Error");
-            }
-            var userLogins = await UserManager.GetLoginsAsync(User.Identity.GetUserId());
-            var otherLogins = AuthenticationManager.GetExternalAuthenticationTypes().Where(auth => userLogins.All(ul => auth.AuthenticationType != ul.LoginProvider)).ToList();
-            ViewBag.ShowRemoveButton = user.PasswordHash != null || userLogins.Count > 1;
-            return View(new ManageLoginsViewModel
-            {
-                CurrentLogins = userLogins
-            });
-        }
-
         
 
         protected override void Dispose(bool disposing)

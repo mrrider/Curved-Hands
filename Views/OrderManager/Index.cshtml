@@ -42,8 +42,8 @@
                 @Html.DisplayFor(modelItem => item.Total)
             </td>
             <td>
-                <input type="submit" value="Make Project" onclick="location.href='@Url.Action("Confrim", "OrderOperator", new { id = item.OrderId })'" class="btn btn-default" />
-                <input type="submit" value="Reject" onclick="location.href='@Url.Action("Reject", "OrderOperator", new { id = item.OrderId })'" class="btn btn-default" />
+                <input type="submit" value="Make Project" onclick="location.href='@Url.Action("Confrim", "OrderManager", new { id = item.OrderId })'" class="btn btn-default" />
+                <input type="submit" value="Reject" onclick="location.href='@Url.Action("Reject", "OrderManager", new { id = item.OrderId })'" class="btn btn-default" />
             </td>
         </tr>
     }
