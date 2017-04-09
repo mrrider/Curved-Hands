@@ -139,6 +139,38 @@ namespace TTP_Project.Controllers
                 ord.orderStartus = OrderStatus.InProgress;
                 unitOfWork.OrderRepository.Update(ord);
 
+                Finance last = unitOfWork.FinancesRepository.Get().Last();
+                decimal cost = 0 - ord.Total * 0.05m;
+                Finance fin = new Finance()
+                {
+                    TransactionName = "salary",
+                    From = "company",
+                    To = "orderManager",
+                    itemDescription = "advance",
+                    Date = DateTime.Now,
+                    Cost = cost,
+                    Balance = last.Balance + cost
+                };
+
+                unitOfWork.FinancesRepository.Insert(fin);
+
+                unitOfWork.Save();
+
+
+                Finance last1 = unitOfWork.FinancesRepository.Get().Last();
+                Finance fin1 = new Finance()
+                {
+                    TransactionName = "income",
+                    From = ord.customer.UserName,
+                    To = "company",
+                    itemDescription = "item_bought",
+                    Date = DateTime.Now,
+                    Cost = ord.Total,
+                    Balance = last1.Balance + ord.Total
+                };
+
+                unitOfWork.FinancesRepository.Insert(fin1);
+
                 unitOfWork.Save();
 
                 return RedirectToAction("Index");

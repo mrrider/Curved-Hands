@@ -26,6 +26,12 @@ namespace TTP_Project.Controllers
             return View(items);
         }
 
+        [Authorize(Roles = "ProjectManager")]
+        public ActionResult Error()
+        {
+            return View();
+        }
+
         public ActionResult Details(int id = 0)
         {
             if (id == 0)
@@ -39,32 +45,6 @@ namespace TTP_Project.Controllers
             }
 
             IEnumerable<WorkItem> wkItems = unitOfWork.WorkItemRepository.Get().Where(s => s.assignedProject.id == item.id);
-            //Order ord = item.order;
-
-            //List<WorkItem> wkItems = new List<WorkItem>();
-            //string listItems = ord.orderItemsIds;
-            //IDictionary<int, int> prItems = new Dictionary<int, int>();
-
-            //string[] wkitem = listItems.Split(';');
-            //foreach (string k in wkitem)
-            //{
-
-            //    string[] u = k.Split(':');
-            //    if (u.Length > 1)
-            //    {
-
-            //        int key = int.Parse(u[0]);
-            //        int value = int.Parse(u[1]);
-            //        prItems.Add(key, value);
-            //    }
-            //}
-            //foreach (KeyValuePair<int, int> kvp in prItems)
-            //{
-            //    ProductItem pr = unitOfWork.ProductItemRepository.GetByID(kvp.Key);
-            //    List<WorkItem> wk = Utilts.GenericTasks(pr.Categorie).ToList();
-            //    for (int i = 0; i < kvp.Value; i++)
-            //        wkItems.AddRange(wk);
-            //}
 
             item.tasks = wkItems.ToList();
 
@@ -93,8 +73,8 @@ namespace TTP_Project.Controllers
         {
             Project item = unitOfWork.ProjectRepository.GetByID(model.id);
             bool canStart = true;
-
-           foreach(WorkItem w in item.tasks)
+            ProjectStatus oldstatus = item.projectStatus;
+            foreach(WorkItem w in item.tasks)
             {
                 if (w.AssignedWorker == null)
                     canStart = false;
@@ -102,16 +82,166 @@ namespace TTP_Project.Controllers
 
             if (canStart)
             {
-                item.projectStatus = model.projectStatus;
+                if (oldstatus == ProjectStatus.Initial && model.projectStatus == ProjectStatus.InProgress)
+                {
+                    item.projectStatus = model.projectStatus;
 
-                unitOfWork.ProjectRepository.Update(item);
-                unitOfWork.Save();
+                    foreach (WorkItem w in item.tasks)
+                    {
+                        Finance last = unitOfWork.FinancesRepository.Get().Last();
 
-                return RedirectToAction("Index");
+                        Finance fin = new Finance()
+                        {
+                            TransactionName = "salary",
+                            From = "company",
+                            To = w.AssignedWorker.UserName,
+                            itemDescription = "advance",
+                            Date = DateTime.Now,
+                            Cost = 0 - w.Price/2,
+                            Balance = last.Balance - w.Price/2
+                        };
+
+                        unitOfWork.FinancesRepository.Insert(fin);
+                        unitOfWork.Save();
+                    }
+
+                    Finance last1 = unitOfWork.FinancesRepository.Get().Last();
+                    decimal cost = 0 - item.order.Total * 0.05m;
+                    Finance fin1 = new Finance()
+                    {
+                        TransactionName = "salary",
+                        From = "company",
+                        To = "projectManager",
+                        itemDescription = "advance",
+                        Date = DateTime.Now,
+                        Cost = cost,
+                        Balance = last1.Balance + cost
+                    };
+
+                    unitOfWork.FinancesRepository.Insert(fin1);
+
+
+                    unitOfWork.ProjectRepository.Update(item);
+                    unitOfWork.Save();
+
+                    return RedirectToAction("Index");
+                }else if(oldstatus == ProjectStatus.InProgress && model.projectStatus == ProjectStatus.Completed)
+                {
+                    bool canClose = true;
+                    foreach (WorkItem w in item.tasks)
+                    {
+                        if (w.Status != TaskStatus.Completed)
+                            canClose = false;
+                    }
+                    if (canClose)
+                    {
+                        item.projectStatus = model.projectStatus;
+
+                        unitOfWork.ProjectRepository.Update(item);
+                        unitOfWork.Save();
+
+
+                        //sell all salary
+
+                        Finance last = unitOfWork.FinancesRepository.Get().Last();
+                        decimal cost = 0 - item.order.Total * 0.05m;
+                        Finance fin = new Finance()
+                        {
+                            TransactionName = "salary",
+                            From = "company",
+                            To = "projectManager",
+                            itemDescription = "salary",
+                            Date = DateTime.Now,
+                            Cost = cost,
+                            Balance = last.Balance + cost
+                        };
+
+                        unitOfWork.FinancesRepository.Insert(fin);
+                        unitOfWork.Save();
+
+                        Finance last1 = unitOfWork.FinancesRepository.Get().Last();
+                        Finance fin1 = new Finance()
+                        {
+                            TransactionName = "salary",
+                            From = "company",
+                            To = "orderManager",
+                            itemDescription = "salary",
+                            Date = DateTime.Now,
+                            Cost = cost,
+                            Balance = last1.Balance + cost
+                        };
+
+                        unitOfWork.FinancesRepository.Insert(fin1);
+                        unitOfWork.Save();
+
+
+
+                        Finance last2 = unitOfWork.FinancesRepository.Get().Last();
+                        cost = 0 - item.order.Total * 0.1m;
+                        Finance fin2 = new Finance()
+                        {
+                            TransactionName = "salary",
+                            From = "company",
+                            To = "admin",
+                            itemDescription = "salary",
+                            Date = DateTime.Now,
+                            Cost = cost,
+                            Balance = last2.Balance + cost
+                        };
+
+                        unitOfWork.FinancesRepository.Insert(fin2);
+                        unitOfWork.Save();
+
+                        Finance last3 = unitOfWork.FinancesRepository.Get().Last();
+                        Finance fin3 = new Finance()
+                        {
+                            TransactionName = "salary",
+                            From = "company",
+                            To = "accountManager",
+                            itemDescription = "salary",
+                            Date = DateTime.Now,
+                            Cost = cost,
+                            Balance = last3.Balance + cost
+                        };
+
+                        unitOfWork.FinancesRepository.Insert(fin3);
+                        unitOfWork.Save();
+
+                        foreach(WorkItem w in item.tasks)
+                        {
+                            Finance lastDev = unitOfWork.FinancesRepository.Get().Last();
+
+                            Finance findev = new Finance()
+                            {
+                                TransactionName = "salary",
+                                From = "company",
+                                To = w.AssignedWorker.UserName,
+                                itemDescription = "salary",
+                                Date = DateTime.Now,
+                                Cost = 0 - w.Price / 2,
+                                Balance = lastDev.Balance - w.Price / 2
+                            };
+
+                            unitOfWork.FinancesRepository.Insert(findev);
+                            unitOfWork.Save();
+                        }
+
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Error");
+                    }
+
+                }
+                else
+                {
+                    return RedirectToAction("Error");
+                }
             }
             else
             {
-                return RedirectToAction("About");
+                return RedirectToAction("Error");
             }
         }
         

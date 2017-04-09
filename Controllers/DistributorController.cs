@@ -38,6 +38,7 @@ namespace TTP_Project.Controllers
             {
                 return RedirectToAction("Index", RolesConst.ACCOUNT_MANAGER);
             }
+
             return RedirectToAction("About", "Home");;
         }
 

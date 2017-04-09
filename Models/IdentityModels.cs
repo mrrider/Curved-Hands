@@ -129,6 +129,15 @@ namespace TTP_Project.Models
             success = this.AddUserToRole(userManager, developer.Id, RolesConst.DEVELOPER);
             if (!success) return success;
 
+            ApplicationUser accountManager = new ApplicationUser();
+            accountManager.UserName = "accountManager";
+            accountManager.Email = "accountManager@accountManager.com";
+            accountManager.RoleName = RolesConst.ACCOUNT_MANAGER;
+            accountManager.FistName = RolesConst.ACCOUNT_MANAGER;
+            accountManager.LastName = RolesConst.ACCOUNT_MANAGER;
+            IdentityResult financeResult = userManager.Create(accountManager, "Pas@123");
+            success = this.AddUserToRole(userManager, accountManager.Id, RolesConst.ACCOUNT_MANAGER);
+            if (!success) return success;
 
             //Catagorie blog = new Catagorie()
             //{
@@ -159,6 +168,18 @@ namespace TTP_Project.Models
             this.ProductItems.Add(blogItem);
             this.ProductItems.Add(CVItem);
 
+            Finance fin = new Finance()
+            {
+                 TransactionName = "start_budget",
+                 From = "bank",
+                 To = "company",
+                 itemDescription = "start_invoice",
+                 Date = DateTime.Now,
+                 Cost = 10000,
+                 Balance = 10000
+            };
+
+            this.Finances.Add(fin);
 
             //WorkItem workItem = new WorkItem()
             //{
@@ -345,5 +366,7 @@ namespace TTP_Project.Models
         public System.Data.Entity.DbSet<TTP_Project.Models.entities.WorkItem> WorkItems { get; set; }
 
         public System.Data.Entity.DbSet<TTP_Project.Models.entities.Project> Projects { get; set; }
+
+        public System.Data.Entity.DbSet<TTP_Project.Models.entities.Finance> Finances { get; set; }
     }   
 }

@@ -17,7 +17,7 @@ namespace TTP_Project.Models.repository
         private GenericRepository<Project> projectRepository;
         private GenericRepository<Cart> cartRepository;
         private GenericRepository<Catagorie> catagorieRepository;
-        private GenericRepository<Finances> financesRepository;
+        private GenericRepository<Finance> financesRepository;
 
         public GenericRepository<Catagorie> CatagorieRepositpry
         {
@@ -110,14 +110,14 @@ namespace TTP_Project.Models.repository
             }
         }
 
-        public GenericRepository<Finances> FinancesRepository
+        public GenericRepository<Finance> FinancesRepository
         {
             get
             {
 
                 if (this.financesRepository == null)
                 {
-                    this.financesRepository = new GenericRepository<Finances>(context);
+                    this.financesRepository = new GenericRepository<Finance>(context);
                 }
                 return financesRepository;
             }

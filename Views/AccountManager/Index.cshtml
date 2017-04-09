@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TTP_Project.Models.entities.Finance>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FinanceId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.From)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.To)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itemDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(model => item.FinanceId)
+            </th>
+            <th>
+                @Html.DisplayFor(model => item.TransactionName)
+            </th>
+            <th>
+                @Html.DisplayFor(model => item.From)
+            </th>
+            <th>
+                @Html.DisplayFor(model => item.To)
+            </th>
+            <th>
+                @Html.DisplayFor(model => item.Cost)
+            </th>
+            <th>
+                @Html.DisplayFor(model => item.itemDescription)
+            </th>
+            <th>
+                @Html.DisplayFor(model => item.Balance)
+            </th>
+            <th>
+                @Html.DisplayFor(model => item.Date)
+            </th>
+           
+        </tr>
+    }
+</table>

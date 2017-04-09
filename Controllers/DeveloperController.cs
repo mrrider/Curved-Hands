@@ -17,7 +17,7 @@ using TTP_Project.Models.ViewModels;
 
 namespace TTP_Project.Controllers
 {
-    public class ProgrammerController : Controller
+    public class DeveloperController : Controller
     {
         UnitOfWork unitOfWork = new UnitOfWork();
         private ApplicationDbContext _db = new ApplicationDbContext();
