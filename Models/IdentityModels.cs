@@ -139,12 +139,7 @@ namespace TTP_Project.Models
             success = this.AddUserToRole(userManager, accountManager.Id, RolesConst.ACCOUNT_MANAGER);
             if (!success) return success;
 
-            //Catagorie blog = new Catagorie()
-            //{
-            //    Name = "Blog"
-            //};
-            //this.Catagories.Add(blog);
-
+         
             ProductItem blogItem = new ProductItem()
             {
                 Name = "Blog Template",
@@ -180,113 +175,7 @@ namespace TTP_Project.Models
             };
 
             this.Finances.Add(fin);
-
-            //WorkItem workItem = new WorkItem()
-            //{
-            //    Name = "Frontend",
-            //    Price = 100,
-            //    Description = "Create frontend blog",
-            //    DueDate = DateTime.Today + (new TimeSpan(12, 20, 20)),
-            //    Status = TaskStatus.InProgress,
-            //    AssignedWorker = user17
-            //};
-            //this.WorkItems.Add(workItem);
-
-            //WorkItem workItem1 = new WorkItem()
-            //{
-            //    Name = "Шаблон 2",
-            //    Description = "blablabla",
-            //    DueDate = DateTime.Today + (new TimeSpan(12, 20, 20)),
-            //    Status = TaskStatus.InProgress,
-            //    AssignedWorker = user16
-            //};
-            //this.WorkItems.Add(workItem1);
-
-            //WorkItem workItem2 = new WorkItem()
-            //{
-            //    Name = "Icon",
-            //    Description = "wow",
-            //    DueDate = DateTime.Today + (new TimeSpan(12, 20, 20)),
-            //    Status = TaskStatus.InProgress
-            //};
-            //this.WorkItems.Add(workItem2);
-
-
-            //Resourse r1 = new Resourse()
-            //{
-            //    Name = "Meal",
-            //    Price = 200,
-            //    Description = "Some meal for staff"
-            //};
-
-            //Resourse r2 = new Resourse()
-            //{
-            //    Name = "LapTops",
-            //    Price = 1000,
-            //    Description = "Computers for programmers"
-            //};
-
-            //this.Resources.Add(r1);
-            //this.Resources.Add(r2);
-
-            //Order or1 = new Order()
-            //{
-            //    completeDate = new DateTime(2017, 5, 7) + (new TimeSpan(12, 20, 20)),
-            //    OrderDate = new DateTime(2017, 3, 2) + (new TimeSpan(12, 20, 20)),
-            //    detailDescription = "Order that show bought blog",
-            //    orderStartus = OrderStatus.Initiating,
-            //    Total = 550,
-            //    customer = new Customer()
-            //    {
-            //        Email = "@",
-            //        FistName = "A",
-            //        LastName = "B",
-            //        RoleName = RolesConst.CUSTOMER,
-            //        UserName = "Nam"
-            //    },
-            //    orderItems = new List<ProductItem>()
-
-            //};
-
-            //or1.orderItems.Add(item3);
-            //or1.orderItems.Add(item4);
-            //this.Orders.Add(or1);
-
-            //Order or2 = new Order()
-            //{
-            //    completeDate = DateTime.Now,
-            //    OrderDate = DateTime.Now,
-            //    detailDescription = "Another description",
-            //    orderStartus = OrderStatus.Processiong,
-            //    Total = 150
-            //};
-
-            //Order or3 = new Order()
-            //{
-            //    completeDate = DateTime.Now,
-            //    OrderDate = DateTime.Now,
-            //    detailDescription = "Some descriotion",
-            //    orderStartus = OrderStatus.Initiating,
-            //    Total = 600,
-            //};
-
-            //this.Orders.Add(or2);
-            //this.Orders.Add(or3);
-
-            //Project project = new Project()
-            //{
-            //    name = "Creating blog",
-            //    nameProjectManager = "manager@gmail.com",
-            //    costs = 300,
-            //    projectStatus = ProjectStatus.InProgress,
-            //    projectManager = user10,
-            //    order = or1,
-            //    tasks = new List<WorkItem>()
-            //};
-
-            //project.tasks.Add(workItem);
-            //project.tasks.Add(workItem1);
-            //this.Projects.Add(project);
+            
 
             this.SaveChanges();
 
