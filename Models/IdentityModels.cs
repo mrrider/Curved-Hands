@@ -244,9 +244,6 @@ namespace TTP_Project.Models
                 base.Seed(context);
             }
         }
-        
-
-        public System.Data.Entity.DbSet<TTP_Project.Models.entities.Operator> ApplicationUsers { get; set; }
 
         public System.Data.Entity.DbSet<TTP_Project.Models.entities.Order> Orders { get; set; }
 

@@ -191,11 +191,9 @@
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DeveloperController.cs" />
-    <Compile Include="Controllers\DistributorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\OperatorController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderManagerController.cs" />
     <Compile Include="Controllers\ProjectManagerController.cs" />
@@ -215,7 +213,6 @@
     <Compile Include="Models\entities\Cart.cs" />
     <Compile Include="Models\entities\Catagorie.cs" />
     <Compile Include="Models\entities\Finance.cs" />
-    <Compile Include="Models\entities\Operator.cs" />
     <Compile Include="Models\entities\Order.cs" />
     <Compile Include="Models\entities\ProductItem.cs" />
     <Compile Include="Models\entities\Programmer.cs" />
@@ -238,8 +235,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\main.css" />
-    <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Image\im1.png" />
     <Content Include="js\bootstrap.js" />
@@ -264,6 +259,8 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -299,21 +296,6 @@
     <Content Include="Views\AdminUser\Details.cshtml" />
     <Content Include="Views\AdminUser\Edit.cshtml" />
     <Content Include="Views\AdminUser\Delete.cshtml" />
-    <Content Include="Views\Operator\Create.cshtml" />
-    <Content Include="Views\Operator\Delete.cshtml" />
-    <Content Include="Views\Operator\Details.cshtml" />
-    <Content Include="Views\Operator\Edit.cshtml" />
-    <Content Include="Views\Operator\Index.cshtml" />
-    <Content Include="Views\ResourceManagers\Create.cshtml" />
-    <Content Include="Views\ResourceManagers\Delete.cshtml" />
-    <Content Include="Views\ResourceManagers\Details.cshtml" />
-    <Content Include="Views\ResourceManagers\Edit.cshtml" />
-    <Content Include="Views\ResourceManagers\Index.cshtml" />
-    <Content Include="Views\SalesManager\Create.cshtml" />
-    <Content Include="Views\SalesManager\Delete.cshtml" />
-    <Content Include="Views\SalesManager\Details.cshtml" />
-    <Content Include="Views\SalesManager\Edit.cshtml" />
-    <Content Include="Views\SalesManager\Index.cshtml" />
     <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Items\Details.cshtml" />
@@ -326,8 +308,6 @@
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Customer\Details.cshtml" />
-    <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Items\Create.cshtml" />
     <Content Include="Views\Items\Delete.cshtml" />
     <Content Include="Views\Items\Edit.cshtml" />
@@ -349,9 +329,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
