@@ -4,20 +4,17 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "form-login-ul" }))
     {
         @Html.AntiForgeryToken()
-
-        <ul class="form-login-ul">
-            <li class="active">@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
-            <li>
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
-        </ul>
+            <ul class="form-login-ul-right">
+                <li>
+                    @Html.ActionLink("Settings " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
+            </ul>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li class="active">@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
+    <ul class="form-login-ul-right">
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>

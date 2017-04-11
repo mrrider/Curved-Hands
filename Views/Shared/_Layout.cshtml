@@ -9,32 +9,42 @@
 </head>
 <body>
     <div class="navbar-cont">
-        <ul class="navigation-bar">
-            @if (Request.IsAuthenticated)
-            {
+        <ul class="form-login-ul">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("Items", "Index", "Items")</li>
+               @if (User.IsInRole("Admin"))
+               {
+                <li>@Html.ActionLink("Users", "Index", "AdminUser")</li>
+                <li>@Html.ActionLink("Roles", "Index", "Roles")</li>
+               }
+               else if (User.IsInRole("Customer"))
+               {
+                <li>@Html.ActionLink("Products", "Index", "Items")</li>
                 <li>@Html.ActionLink("About", "About", "Home")</li>
-                if (!User.IsInRole("Admin"))
-                {
-                <li>@Html.ActionLink("My cabinet", "Index", "Distributor")</li>
-                }
-
-                if (User.IsInRole("Admin"))
-                {
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Roles", "Index", "Roles")</li>
-                    <li>@Html.ActionLink("Users", "Index", "AdminUser")</li>
-                }
-
-            }
-            else
-            {
-
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
+                <li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
+                    }
+                    else if (User.IsInRole("Developer"))
+                    {
+                   <li>@Html.ActionLink("Work Items","Index","Developer")</li>
+               }
+               else if (User.IsInRole("ProjectManager"))
+               {
+                   <li>@Html.ActionLink("Projects","Index", "ProjectManager")</li>
+               }
+               else if (User.IsInRole("AccountManager"))
+               {
+                <li>@Html.ActionLink("Finances", "Index", "AccountManager")</li>
+               }
+               else if (User.IsInRole("OrderManager"))
+               {
+                <li>@Html.ActionLink("Orders", "Index", "OrderManager")</li>
+               }
+               else
+               {
+                <li>@Html.ActionLink("Products", "Index", "Items")</li>
                 <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            }
+                <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
+               }
         </ul>
         @Html.Partial("_LoginPartial")
     </div>

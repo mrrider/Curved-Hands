@@ -1,7 +1,7 @@
 ﻿body {
    color: black;
    padding: 0px;
-   background-color: slategrey; 
+   background-color:white; 
    margin: 0px;
    font-family:Arial, Helvetica, sans-serif;
 }
@@ -21,6 +21,8 @@ a{
 }
 .navbar-cont{
     background-color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
 }
 .navigation-bar{
@@ -30,11 +32,17 @@ a{
 }
 li {
     display: inline;
+    margin: 5px;
 }
 .form-login-ul{
     display:inline;
 }
-.
+.form-login-ul-right{
+     display:inline;
+     float:right; 
+     margin-top:0px; 
+     margin-right: 40px;
+}
 .headings{
    text-align: center;
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -46,4 +54,17 @@ footer{
     color:black; 
     font-family:sans-serif; 
     font-weight:bold;
+}
+.home-content-container{
+
+}
+.imgs-home{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width:100%;
+}
+.imgs-home-li{
+    display: inline;
+    margin: 7.8%;
 }
