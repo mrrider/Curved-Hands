@@ -146,7 +146,7 @@ namespace TTP_Project.Controllers
                     TransactionName = "salary",
                     From = "company",
                     To = "orderManager",
-                    itemDescription = "advance",
+                    ItemDescription = "advance",
                     Date = DateTime.Now,
                     Cost = cost,
                     Balance = last.Balance + cost
@@ -163,7 +163,7 @@ namespace TTP_Project.Controllers
                     TransactionName = "income",
                     From = ord.Customer.UserName,
                     To = "company",
-                    itemDescription = "item_bought",
+                    ItemDescription = "item_bought",
                     Date = DateTime.Now,
                     Cost = ord.Total,
                     Balance = last1.Balance + ord.Total

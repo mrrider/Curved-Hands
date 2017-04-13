@@ -95,7 +95,7 @@ namespace TTP_Project.Controllers
                             TransactionName = "salary",
                             From = "company",
                             To = w.AssignedWorker.UserName,
-                            itemDescription = "advance",
+                            ItemDescription = "advance",
                             Date = DateTime.Now,
                             Cost = 0 - w.Price/2,
                             Balance = last.Balance - w.Price/2
@@ -112,7 +112,7 @@ namespace TTP_Project.Controllers
                         TransactionName = "salary",
                         From = "company",
                         To = "projectManager",
-                        itemDescription = "advance",
+                        ItemDescription = "advance",
                         Date = DateTime.Now,
                         Cost = cost,
                         Balance = last1.Balance + cost
@@ -150,7 +150,7 @@ namespace TTP_Project.Controllers
                             TransactionName = "salary",
                             From = "company",
                             To = "projectManager",
-                            itemDescription = "salary",
+                            ItemDescription = "salary",
                             Date = DateTime.Now,
                             Cost = cost,
                             Balance = last.Balance + cost
@@ -165,7 +165,7 @@ namespace TTP_Project.Controllers
                             TransactionName = "salary",
                             From = "company",
                             To = "orderManager",
-                            itemDescription = "salary",
+                            ItemDescription = "salary",
                             Date = DateTime.Now,
                             Cost = cost,
                             Balance = last1.Balance + cost
@@ -183,7 +183,7 @@ namespace TTP_Project.Controllers
                             TransactionName = "salary",
                             From = "company",
                             To = "admin",
-                            itemDescription = "salary",
+                            ItemDescription = "salary",
                             Date = DateTime.Now,
                             Cost = cost,
                             Balance = last2.Balance + cost
@@ -198,7 +198,7 @@ namespace TTP_Project.Controllers
                             TransactionName = "salary",
                             From = "company",
                             To = "accountManager",
-                            itemDescription = "salary",
+                            ItemDescription = "salary",
                             Date = DateTime.Now,
                             Cost = cost,
                             Balance = last3.Balance + cost
@@ -216,7 +216,7 @@ namespace TTP_Project.Controllers
                                 TransactionName = "salary",
                                 From = "company",
                                 To = w.AssignedWorker.UserName,
-                                itemDescription = "salary",
+                                ItemDescription = "salary",
                                 Date = DateTime.Now,
                                 Cost = 0 - w.Price / 2,
                                 Balance = lastDev.Balance - w.Price / 2

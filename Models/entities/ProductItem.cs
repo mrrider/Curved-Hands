@@ -23,13 +23,13 @@ namespace TTP_Project.Models.entities
         public string Name {get; set;}
 
         public String shortDescription {get; set;}
-        public String description {get; set;}
+        public String Description {get; set;}
         [Required(ErrorMessage = "Price is required")]
         [Range(0.01, 999999.99, ErrorMessage = "Price must be between 0.01 and 999999.99")]
         public decimal Price { get; set;}
         public String toString()
         {
-            return Name + " " + Price + " " +description;
+            return Name + " " + Price + " " +Description;
         }
 
         public byte[] InternalImage { get; set; }

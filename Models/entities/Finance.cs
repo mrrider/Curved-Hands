@@ -23,7 +23,7 @@ namespace TTP_Project.Models.entities
 
         public decimal Cost { get; set; }
 
-        public string itemDescription { get; set; }
+        public string ItemDescription { get; set; }
 
         public decimal Balance { get; set; }
 

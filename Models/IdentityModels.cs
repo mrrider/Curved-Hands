@@ -145,7 +145,7 @@ namespace TTP_Project.Models
                 Name = "Blog Template",
                 Price = 200,
                 shortDescription = "Amazing blog template",
-                description = "Blog for everyone, lots of features",
+                Description = "Blog for everyone, lots of features",
                 ItemPictureUrl = "http://cssmenumaker.com/sites/default/files/blog_list_images/screen_shot_2013-02-11_at_9.07.59_pm.png",
                 InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
                 Categorie = TemplateSiteTypes.Blog
@@ -155,7 +155,7 @@ namespace TTP_Project.Models
                 Name = "CV Template",
                 Price = 400,
                 shortDescription = "Amazing CV template",
-                description = "CV for everyone, lots of features",
+                Description = "CV for everyone, lots of features",
                 ItemPictureUrl = "http://cssmenumaker.com/sites/default/files/blog_list_images/screen_shot_2013-02-11_at_9.07.59_pm.png",
                 InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
                 Categorie = TemplateSiteTypes.VisitCard
@@ -168,7 +168,7 @@ namespace TTP_Project.Models
                  TransactionName = "start_budget",
                  From = "bank",
                  To = "company",
-                 itemDescription = "start_invoice",
+                ItemDescription = "start_invoice",
                  Date = DateTime.Now,
                  Cost = 10000,
                  Balance = 10000
