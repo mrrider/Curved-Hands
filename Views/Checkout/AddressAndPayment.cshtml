@@ -5,6 +5,8 @@
 }
 
 <script>
+    alert("yes");
+
     $('.active form').card({ container: $('.card-wrapper') })
     $('form').card({
         container: '.card-wrapper', // *required*
@@ -21,7 +23,7 @@
 <div class="col-lg-10">
   <div class="well bs-component">
 
-    @using (Html.BeginForm(new { @class = "form-horizontal" }))
+    @using (Html.BeginForm(htmlAttributes : new { @class = "form-horizontal", @name="pezda" }, ))
     {
        <h2>Address And Payment</h2>
         <fieldset>
@@ -31,9 +33,9 @@
             <div>
                 <p>Licence</p>
                 <p>Some licence text need to modify</p>
-                <p><input type="radio" name="vehicle" value="Bike">I agree</p>
-                <p><input type="radio" name="vehicle" value="Car">I disagree</p>
-                <p><input type="radio" name="vehicle" value="Car">I want change</p>
+                <p><input type="radio" name="confirmation" value="agree">I agree</p>
+                <p><input type="radio" name="confirmation" value="disagree">I disagree</p>
+                <p><input type="radio" name="confirmation" value="custom">I want change</p>
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.DetailDescription, htmlAttributes: new { @class = "col-lg-2 control-label" })
