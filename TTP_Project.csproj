@@ -237,6 +237,11 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\main.css" />
     <Content Include="Global.asax" />
+    <Content Include="Image\blog.jpg" />
+    <Content Include="Image\cv.jpg" />
+    <Content Include="Image\ecommerce.jpg" />
+    <Content Include="Image\enterprise.jpg" />
+    <Content Include="Image\forum.png" />
     <Content Include="Image\im1.png" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />

@@ -16,35 +16,34 @@
         });
     });
 </script>
-<h2>Details</h2>
+<h2>Template Details</h2>
 <div>
-    <h4>Item</h4>
     <hr />
-    <img class="dl-horizontal" src="@Url.Action("RenderImage", new { id = Model.ID})" />
-    <dl class="dl-horizontal">
-        <dt>
+    <img class="template-img col-md-9" src="@Url.Action("RenderImage", new { id = Model.ID})" />
+    <dl class="dl-horizontal col-md-3" style="line-height:1.5">
+        <dt style="width:auto">
             @Html.DisplayNameFor(model => model.Categorie)
         </dt>
-        <dd>
+        <dd style="width:100px">
             @Html.DisplayFor(model => model.Categorie)
-        </dd>
-        <dt>
+        </dd> 
+        <dt style="width:auto">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd>
+        <dd style="width:100px">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt>
+        <dt style="width:auto">
             @Html.DisplayNameFor(model => model.Price)
         </dt>
-        <dd>
+        <dd style="width:100px">
             @Html.DisplayFor(model => model.Price)
         </dd>
 
     </dl>
 </div>
 <p>
-    <a href="#" class="AddLink"
+    <a href="#" class="btn btn-info btn-sm btn-standart" style="color:white; margin-right:95px; margin-left:15px;"
        data-id="@Model.ID" data-toggle="modal" data-target="#myModal">
         Add
         to cart
