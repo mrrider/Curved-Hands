@@ -75,7 +75,7 @@ namespace TTP_Project.Models.constants
                     tasks.Add(database);
                     tasks.Add(payment);
                     break;
-                case TemplateSiteTypes.Enterprice:
+                case TemplateSiteTypes.Enterprise:
                     tasks.Add(frontend);
                     tasks.Add(backend);
                     tasks.Add(database);

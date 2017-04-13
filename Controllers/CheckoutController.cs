@@ -34,11 +34,11 @@ namespace TTP_Project.Controllers
             TryUpdateModel(order);
 
             order.OrderDate = DateTime.Now;
-            order.completeDate = DateTime.Now.AddDays(7).Date;
-            order.orderStartus = OrderStatus.Initial;
-            order.detailDescription = values[0];
-            order.orderItemsIds = ""; 
-            order.customer = unitOfWork.UserRepository.dbSet.Where(s => s.UserName.Equals(User.Identity.Name)).First(); 
+            order.CompleteDate = DateTime.Now.AddDays(7).Date;
+            order.OrderStatus = OrderStatus.Initial;
+            order.DetailDescription = values[0];
+            order.OrderItemsIds = ""; 
+            order.Customer = unitOfWork.UserRepository.dbSet.Where(s => s.UserName.Equals(User.Identity.Name)).First(); 
             //There we send new customer order to order-operator
             
             var cart = OrderCart.GetCart(this);
@@ -52,7 +52,7 @@ namespace TTP_Project.Controllers
         
         public ActionResult Complete(int id)
         {
-            bool isValid = unitOfWork.OrderRepository.dbSet.Any(o => o.OrderId == id && o.customer.UserName == User.Identity.Name);
+            bool isValid = unitOfWork.OrderRepository.dbSet.Any(o => o.OrderId == id && o.Customer.UserName == User.Identity.Name);
 
             if (isValid)
             {

@@ -128,7 +128,7 @@ namespace TTP_Project.Models
             {
                 itemList += item.ProductItemId + ":" + item.Count + ";";
             }
-            order.orderItemsIds = itemList;
+            order.OrderItemsIds = itemList;
             unitOfWork.Save();
             EmptyCart();
             return order.OrderId;

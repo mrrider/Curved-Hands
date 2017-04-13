@@ -20,7 +20,7 @@ namespace TTP_Project.Controllers
         [Authorize(Roles = "Customer")]
         public ActionResult Index()
         {
-            var orders = unityOfWork.OrderRepository.dbSet.Where(s => s.customer.UserName.Equals(User.Identity.Name));
+            var orders = unityOfWork.OrderRepository.dbSet.Where(s => s.Customer.UserName.Equals(User.Identity.Name));
                               
             return View(orders.ToList());
         }

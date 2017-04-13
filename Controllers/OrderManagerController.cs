@@ -21,14 +21,14 @@ namespace TTP_Project.Controllers
         
         public ActionResult Index()
         {
-            activeOrders  = unitOfWork.OrderRepository.Get().Where(s => s.orderStartus.Equals(OrderStatus.Initial));
+            activeOrders  = unitOfWork.OrderRepository.Get().Where(s => s.OrderStatus.Equals(OrderStatus.Initial));
             return View(activeOrders);
         }
 
         public ActionResult Reject(int? id)
         {
             Order ord = unitOfWork.OrderRepository.GetByID(id);
-            ord.orderStartus = OrderStatus.Rejected;
+            ord.OrderStatus = OrderStatus.Rejected;
             unitOfWork.OrderRepository.Update(ord);
             unitOfWork.Save();
             return RedirectToAction("Index");
@@ -46,7 +46,7 @@ namespace TTP_Project.Controllers
             proj.projectStatus = ProjectStatus.Initial;
             proj.order = ord;
             List<WorkItem> wkItems = new List<WorkItem>();
-            string listItems = ord.orderItemsIds;
+            string listItems = ord.OrderItemsIds;
             IDictionary<int, int> prItems = new Dictionary<int, int>();
 
             string[] wkitem = listItems.Split(';');
@@ -97,7 +97,7 @@ namespace TTP_Project.Controllers
 
 
                 List<WorkItem> wkItems = new List<WorkItem>();
-                string listItems = ord.orderItemsIds;
+                string listItems = ord.OrderItemsIds;
                 IDictionary<int, int> prItems = new Dictionary<int, int>();
 
                 string[] wkitem = listItems.Split(';');
@@ -136,7 +136,7 @@ namespace TTP_Project.Controllers
                 pro.tasks = wkItems;
 
                 unitOfWork.ProjectRepository.Update(pro);
-                ord.orderStartus = OrderStatus.InProgress;
+                ord.OrderStatus = OrderStatus.InProgress;
                 unitOfWork.OrderRepository.Update(ord);
 
                 Finance last = unitOfWork.FinancesRepository.Get().Last();
@@ -161,7 +161,7 @@ namespace TTP_Project.Controllers
                 Finance fin1 = new Finance()
                 {
                     TransactionName = "income",
-                    From = ord.customer.UserName,
+                    From = ord.Customer.UserName,
                     To = "company",
                     itemDescription = "item_bought",
                     Date = DateTime.Now,

@@ -7,6 +7,7 @@
 
 <div>
     <h4>Order</h4>
+    <h3>@Html.DisplayFor(model => model.OrderTitle)</h3>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -16,27 +17,27 @@
             @Html.DisplayFor(model => model.OrderId)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.completeDate)
+            @Html.DisplayNameFor(model => model.CompleteDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.completeDate)
+            @Html.DisplayFor(model => model.CompleteDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.orderStartus)
+            @Html.DisplayNameFor(model => model.OrderStatus)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.orderStartus)
+            @Html.DisplayFor(model => model.OrderStatus)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.detailDescription)
+            @Html.DisplayNameFor(model => model.DetailDescription)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.detailDescription)
+            @Html.DisplayFor(model => model.DetailDescription)
         </dd>
         <dd>
-            @Html.DisplayFor(model => model.orderItemsIds)
+            @Html.DisplayFor(model => model.OrderItemsIds)
         </dd>
     </dl>
 </div>

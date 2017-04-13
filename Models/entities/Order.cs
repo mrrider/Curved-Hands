@@ -18,25 +18,28 @@ namespace TTP_Project.Models.entities
         [ScaffoldColumn(false)]
         public DateTime OrderDate { get; set; }
 
-        public DateTime completeDate { get; set; }
+        public DateTime CompleteDate { get; set; }
 
-        public OrderStatus orderStartus { get; set; }
+        public OrderStatus OrderStatus { get; set; }
 
-        public string orderItemsIds { get; set; }
+        public string OrderItemsIds { get; set; }
 
-        public String detailDescription { get; set; }
+        public string OrderTitle { get; set; }
+
+        public string DetailDescription { get; set; }
 
         [ScaffoldColumn(false)]
         public decimal Total { get; set; }
         
-        public ApplicationUser customer { get; set; }
+        public ApplicationUser Customer { get; set; }
         
         public string ToString(Order order)
         {
             StringBuilder bob = new StringBuilder();
 
             bob.Append("<p>Order Information for Order: " + order.OrderId + "<br>Placed at: " + order.OrderDate + "</p>").AppendLine();
-            bob.Append("<p>Name: " + order.customer.FistName + " " + order.customer.LastName + "<br>");
+            bob.Append("<h1>" + order.OrderTitle + "</h1>");
+            bob.Append("<p>Name: " + order.Customer.FistName + " " + order.Customer.LastName + "<br>");
             bob.Append("<br>").AppendLine();
             bob.Append("<Table>").AppendLine();
              
@@ -46,7 +49,7 @@ namespace TTP_Project.Models.entities
             bob.Append("</Table>");
             bob.Append("<b>");
 
-            string footer = String.Format("{0,-12}{1,12}\n",
+            string footer = string.Format("{0,-12}{1,12}\n",
                                           "Total", order.Total);
             bob.Append(footer).AppendLine();
             bob.Append("</b>");
