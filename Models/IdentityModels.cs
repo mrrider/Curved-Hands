@@ -150,6 +150,7 @@ namespace TTP_Project.Models
                 InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
                 Categorie = TemplateSiteTypes.Blog
             };
+
             ProductItem CVItem = new ProductItem()
             {
                 Name = "CV Template",
@@ -160,6 +161,7 @@ namespace TTP_Project.Models
                 InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
                 Categorie = TemplateSiteTypes.VisitCard
             };
+
             ProductItem forumItem = new ProductItem()
             {
                 Name = "Forum Template",
