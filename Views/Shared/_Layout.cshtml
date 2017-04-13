@@ -8,47 +8,49 @@
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
-    <div class="navbar-cont">
-        <ul class="form-login-ul">
+    <header>
+        <div class="navbar-cont navbar">
+            <ul class="form-login-ul">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-               @if (User.IsInRole("Admin"))
-               {
-                <li>@Html.ActionLink("Users", "Index", "AdminUser")</li>
-                <li>@Html.ActionLink("Roles", "Index", "Roles")</li>
-               }
-               else if (User.IsInRole("Customer"))
-               {
-                <li>@Html.ActionLink("My orders", "Index", "Customer")</li>
-                <li>@Html.ActionLink("Products", "Index", "Items")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
-                <li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
-                    }
-                    else if (User.IsInRole("Developer"))
-                    {
-                   <li>@Html.ActionLink("Work Items","Index","Developer")</li>
-               }
-               else if (User.IsInRole("ProjectManager"))
-               {
-                   <li>@Html.ActionLink("Projects","Index", "ProjectManager")</li>
-               }
-               else if (User.IsInRole("AccountManager"))
-               {
-                <li>@Html.ActionLink("Finances", "Index", "AccountManager")</li>
-               }
-               else if (User.IsInRole("OrderManager"))
-               {
-                <li>@Html.ActionLink("Orders", "Index", "OrderManager")</li>
-               }
-               else
-               {
-                <li>@Html.ActionLink("Products", "Index", "Items")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
-               }
-        </ul>
-        @Html.Partial("_LoginPartial")
-    </div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>@Html.ActionLink("Users", "Index", "AdminUser")</li>
+                    <li>@Html.ActionLink("Roles", "Index", "Roles")</li>
+                }
+                else if (User.IsInRole("Customer"))
+                {
+                    <li>@Html.ActionLink("My orders", "Index", "Customer")</li>
+                    <li>@Html.ActionLink("Products", "Index", "Items")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
+                    <li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
+                        }
+                        else if (User.IsInRole("Developer"))
+                        {
+                            <li>@Html.ActionLink("Work Items", "Index", "Developer")</li>
+                        }
+                        else if (User.IsInRole("ProjectManager"))
+                        {
+                            <li>@Html.ActionLink("Projects", "Index", "ProjectManager")</li>
+                        }
+                        else if (User.IsInRole("AccountManager"))
+                        {
+                            <li>@Html.ActionLink("Finances", "Index", "AccountManager")</li>
+                        }
+                        else if (User.IsInRole("OrderManager"))
+                        {
+                            <li>@Html.ActionLink("Orders", "Index", "OrderManager")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Products", "Index", "Items")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
+                        }
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </header>
     <div class="container body-content">
         @RenderBody()
         <hr />

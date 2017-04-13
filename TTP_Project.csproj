@@ -234,6 +234,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\bootstrap.css" />
     <Content Include="css\main.css" />
     <Content Include="Global.asax" />
     <Content Include="Image\im1.png" />
