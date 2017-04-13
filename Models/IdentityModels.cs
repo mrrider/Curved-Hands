@@ -160,8 +160,41 @@ namespace TTP_Project.Models
                 InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
                 Categorie = TemplateSiteTypes.VisitCard
             };
+            ProductItem forumItem = new ProductItem()
+            {
+                Name = "Forum Template",
+                Price = 600,
+                shortDescription = "Amazing forum template",
+                Description = "Forum for everyone, lots of features",
+                ItemPictureUrl = "http://cssmenumaker.com/sites/default/files/blog_list_images/screen_shot_2013-02-11_at_9.07.59_pm.png",
+                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
+                Categorie = TemplateSiteTypes.Forum
+            };
+            ProductItem ecommerceItem = new ProductItem()
+            {
+                Name = "ECommerce Template",
+                Price = 800,
+                shortDescription = "Amazing ECommerce template",
+                Description = "ECommerce for everyone, lots of features",
+                ItemPictureUrl = "http://cssmenumaker.com/sites/default/files/blog_list_images/screen_shot_2013-02-11_at_9.07.59_pm.png",
+                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
+                Categorie = TemplateSiteTypes.ECommerce
+            };
+            ProductItem enterpriceItem = new ProductItem()
+            {
+                Name = "Enterprice Template",
+                Price = 1000,
+                shortDescription = "Amazing Enterprice template",
+                Description = "Enterprice for everyone, lots of features",
+                ItemPictureUrl = "http://cssmenumaker.com/sites/default/files/blog_list_images/screen_shot_2013-02-11_at_9.07.59_pm.png",
+                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
+                Categorie = TemplateSiteTypes.Enterprise
+            };
             this.ProductItems.Add(blogItem);
             this.ProductItems.Add(CVItem);
+            this.ProductItems.Add(forumItem);
+            this.ProductItems.Add(ecommerceItem);
+            this.ProductItems.Add(enterpriceItem);
 
             Finance fin = new Finance()
             {

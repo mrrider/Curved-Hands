@@ -118,7 +118,13 @@ namespace TTP_Project.Controllers
                     ProductItem pr = unitOfWork.ProductItemRepository.GetByID(kvp.Key);
                     List<WorkItem> wk = Utilts.GenericTasks(pr.Categorie).ToList();
                     for (int i = 0; i < kvp.Value; i++)
+                    {
+                        foreach(WorkItem w in wk)
+                        {
+                            w.Description = pr.Description;
+                        }
                         wkItems.AddRange(wk);
+                    }
                 }
                 unitOfWork.ProjectRepository.Insert(pro);
                 unitOfWork.Save();
