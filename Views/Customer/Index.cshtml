@@ -12,13 +12,13 @@
             Order Number
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.completeDate)
+            @Html.DisplayNameFor(model => model.CompleteDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.orderStartus)
+            @Html.DisplayNameFor(model => model.OrderStatus)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.detailDescription)
+            @Html.DisplayNameFor(model => model.DetailDescription)
         </th>
         <th></th>
     </tr>
@@ -29,13 +29,13 @@
                 @Html.ActionLink(item.OrderId.ToString(), "Details", new { id = item.OrderId })
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.completeDate)
+                @Html.DisplayFor(modelItem => item.CompleteDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.orderStartus)
+                @Html.DisplayFor(modelItem => item.OrderStatus)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.detailDescription)
+                @Html.DisplayFor(modelItem => item.DetailDescription)
             </td>
 
             <td></td>
