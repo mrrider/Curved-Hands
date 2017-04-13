@@ -22,7 +22,7 @@
 
 
 
-<h2>Order Some Site From Our Templates</h2>
+<h2>Order Our Templates For Your Products</h2>
 @if (Request.IsAuthenticated && User.IsInRole("SalesManager"))
 {
     <p>
@@ -49,7 +49,7 @@
 <table class="table">
     <tr>
         <th>
-            Catagory
+            Category
         </th>
         <th>
             @Html.ActionLink("Item Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
@@ -77,7 +77,7 @@
             </td>
             <td>
             @if (item.ItemPictureUrl != null) { 
-                <a href="@item.ItemPictureUrl">GO To Picture</a>
+                <a href="@item.ItemPictureUrl">Go To Picture</a>
             }
                
             </td>
@@ -87,8 +87,7 @@
                     Add
                     to cart
                 </a>
-                <!--@Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = item.ID }, new { htmlAttributes = new { @data_toggle = "modal", @data_target = "#myModal" } })--> |
-                @Html.ActionLink("Details", "Details", new { id = item.ID })
+                <!--@Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = item.ID }, new { htmlAttributes = new { @data_toggle = "modal", @data_target = "#myModal" } })--> 
                 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                 {
                     @Html.ActionLink("Edit", "Edit", new { id = item.ID })
