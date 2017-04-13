@@ -16,11 +16,11 @@ body {
 }
 
 a:visited{
-    color: blueviolet;
+    color: black;
 }
 
 a{
-    color: blue;
+    color: black;
 }
 
 .main-img{
@@ -68,6 +68,7 @@ li {
    margin-top:300px;
 }
 footer{
+    margin-top:20px;
     color:black; 
     font-family:sans-serif; 
     font-weight:bold;
@@ -91,4 +92,14 @@ footer{
     text-align:center;
     text-transform:uppercase;
 
+}
+.btn-standart{
+   background-color: #337ab7;
+   position:relative;
+}
+#SearchString{
+    height:30px;
+}
+.template-img{
+    margin-bottom:30px;
 }
