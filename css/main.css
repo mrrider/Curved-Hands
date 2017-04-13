@@ -7,11 +7,11 @@
 }
 
 a:visited{
-    color: white;
+    color: blueviolet;
 }
 
 a{
-    color: white;
+    color: blue;
 }
 
 .main-img{
@@ -23,6 +23,7 @@ a{
     background-color: black;
     padding-top: 10px;
     padding-bottom: 10px;
+    color:white;
 
 }
 .navigation-bar{

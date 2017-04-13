@@ -18,6 +18,7 @@
                }
                else if (User.IsInRole("Customer"))
                {
+                <li>@Html.ActionLink("My orders", "Index", "Customer")</li>
                 <li>@Html.ActionLink("Products", "Index", "Items")</li>
                 <li>@Html.ActionLink("About", "About", "Home")</li>
                 <li>@Html.ActionLink("Contacts", "Contact", "Home")</li>
