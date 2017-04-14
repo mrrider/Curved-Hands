@@ -80,15 +80,22 @@ footer{
 .container {
     padding-top: 52px;
 }
-.home-content-container{
-
+.subhead3{
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-weight:700;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    font-size: 32px;
+    text-align:center;
+    margin-top:45%
 }
 .imgs-home{
     list-style-type: none;
     margin: 0;
     padding: 0;
     width:100%;
-    margin-top:30%;
+    margin-top:30px;
     margin-bottom:100px;
 }
 .imgs-home-li{
