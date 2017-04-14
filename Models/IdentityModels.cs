@@ -143,22 +143,22 @@ namespace TTP_Project.Models
             ProductItem blogItem = new ProductItem()
             {
                 Name = "Blog Template",
-                Price = 200,
+                Price = 400,
                 shortDescription = "Amazing blog template",
                 Description = "Blog for everyone, lots of features",
-                ItemPictureUrl = "http://cssmenumaker.com/sites/default/files/blog_list_images/screen_shot_2013-02-11_at_9.07.59_pm.png",
-                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
+                ItemPictureUrl = "https://www.imageupload.co.uk/image/BSYI",
+                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/blog.jpg")),
                 Categorie = TemplateSiteTypes.Blog
             };
 
             ProductItem CVItem = new ProductItem()
             {
                 Name = "CV Template",
-                Price = 400,
+                Price = 200,
                 shortDescription = "Amazing CV template",
                 Description = "CV for everyone, lots of features",
-                ItemPictureUrl = "http://cssmenumaker.com/sites/default/files/blog_list_images/screen_shot_2013-02-11_at_9.07.59_pm.png",
-                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
+                ItemPictureUrl = "https://www.imageupload.co.uk/image/BSYO",
+                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/cv.jpg")),
                 Categorie = TemplateSiteTypes.VisitCard
             };
 
@@ -168,8 +168,8 @@ namespace TTP_Project.Models
                 Price = 600,
                 shortDescription = "Amazing forum template",
                 Description = "Forum for everyone, lots of features",
-                ItemPictureUrl = "http://cssmenumaker.com/sites/default/files/blog_list_images/screen_shot_2013-02-11_at_9.07.59_pm.png",
-                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
+                ItemPictureUrl = "https://www.imageupload.co.uk/image/BSYw",
+                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/forum.jpg")),
                 Categorie = TemplateSiteTypes.Forum
             };
             ProductItem ecommerceItem = new ProductItem()
@@ -178,18 +178,18 @@ namespace TTP_Project.Models
                 Price = 800,
                 shortDescription = "Amazing ECommerce template",
                 Description = "ECommerce for everyone, lots of features",
-                ItemPictureUrl = "http://cssmenumaker.com/sites/default/files/blog_list_images/screen_shot_2013-02-11_at_9.07.59_pm.png",
-                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
+                ItemPictureUrl = "https://www.imageupload.co.uk/image/BSYX",
+                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/ecommerce.jpg")),
                 Categorie = TemplateSiteTypes.ECommerce
             };
             ProductItem enterpriceItem = new ProductItem()
             {
-                Name = "Enterprice Template",
+                Name = "Enterprise Template",
                 Price = 1000,
-                shortDescription = "Amazing Enterprice template",
-                Description = "Enterprice for everyone, lots of features",
-                ItemPictureUrl = "http://cssmenumaker.com/sites/default/files/blog_list_images/screen_shot_2013-02-11_at_9.07.59_pm.png",
-                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/im1.png")),
+                shortDescription = "Amazing Enterprise template",
+                Description = "Enterprise for everyone, lots of features",
+                ItemPictureUrl = "https://www.imageupload.co.uk/image/BSYb",
+                InternalImage = File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/Image/enterprise.jpg")),
                 Categorie = TemplateSiteTypes.Enterprise
             };
             this.ProductItems.Add(blogItem);
