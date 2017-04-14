@@ -5,25 +5,33 @@
 }
 
 <script>
-    alert("yes");
+ 
+    $(document).ready(function () {
+        $("#submitOrder").prop('disabled', true);
+        $(".licence").change(function () {
+            if ($("#radio_1").is(":checked")) {
+                $("#DetailDescription").prop('disabled', true);
+                $("#submitOrder").prop('disabled', false);
+            }
+            else if ($("#radio_2").is(":checked")) {
+                $("#DetailDescription").prop('disabled', true);
+                $("#submitOrder").prop('disabled', true);
+            }
+            else {
+                $("#DetailDescription").prop('disabled', false);
+                $("#DetailDescription").prop('required', true);
+                $("#submitOrder").prop('disabled', false);
+            }
+        });
 
-    $('.active form').card({ container: $('.card-wrapper') })
-    $('form').card({
-        container: '.card-wrapper', // *required*
-        numberInput: 'input#number', // optional — default input[name="number"]
-        expiryInput: 'input#expiry', // optional — default input[name="expiry"]
-        cvcInput: 'input#cvc', // optional — default input[name="cvc"]
-        nameInput: 'input#name', // options - defaults input[name="name"]
-
-        width: 200, // optional — default 350px
-        formatting: true // optional - default true
     });
+   
 </script>
 
 <div class="col-lg-10">
   <div class="well bs-component">
 
-    @using (Html.BeginForm(htmlAttributes : new { @class = "form-horizontal", @name="pezda" }, ))
+    @using (Html.BeginForm( new { @class = "form-horizontal" } ))
     {
        <h2>Address And Payment</h2>
         <fieldset>
@@ -33,14 +41,14 @@
             <div>
                 <p>Licence</p>
                 <p>Some licence text need to modify</p>
-                <p><input type="radio" name="confirmation" value="agree">I agree</p>
-                <p><input type="radio" name="confirmation" value="disagree">I disagree</p>
-                <p><input type="radio" name="confirmation" value="custom">I want change</p>
+                <p><input type="radio" name="confirmation" class="licence" value="agree" id="radio_1">I agree</p>
+                <p><input type="radio" name="confirmation" class="licence" value="disagree" id="radio_2">I disagree</p>
+                <p><input type="radio" name="confirmation" class="licence" value="custom" id="radio_3">I want change</p>
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.DetailDescription, htmlAttributes: new { @class = "col-lg-2 control-label" })
                 <div class="col-lg-10">
-                    @Html.TextAreaFor(model => model.DetailDescription, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "First Name" } })
+                    @Html.TextAreaFor(model => model.DetailDescription, new { htmlAttributes = new { @id = "descriptionField", @class = "form-control", @type = "text", @placeholder = "First Name" } })
                     @Html.ValidationMessageFor(model => model.DetailDescription, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -48,7 +56,7 @@
 
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-8">
-                    <button type="submit" value="AddressAndPayment" class="btn btn-primary">Submit Order &raquo;</button>
+                    <button type="submit" value="AddressAndPayment" class="btn btn-primary" id="submitOrder">Submit Order &raquo;</button>
                 </div>
             </div>
         </fieldset>
